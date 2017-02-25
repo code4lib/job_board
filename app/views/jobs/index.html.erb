@@ -2,6 +2,7 @@
 
 <h1>Jobs</h1>
 <%= render 'table', jobs: @jobs %>
+
 <br>
 
 <%= link_to 'New Job', new_job_path if can? :create, Job %>

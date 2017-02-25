@@ -13,10 +13,15 @@
     <p>
       <%= render_job_badge(@job) %>
     </p>
+
   <p>
     <strong>Telecommute:</strong>
     <%= @job.telecommute %>
   </p>
+  
+  <% @job.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
+  <% end %>
 
   <p>
     <strong>Published:</strong>

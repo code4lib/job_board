@@ -22,7 +22,8 @@ task :import, [:file] => [:environment] do |t, args|
       published: job['published'].present?,
       created_at: job['published'],
       published_at: job['published'],
-      employer: Employer.find_or_create_by(name: job['employer']['name'])
+      employer: Employer.find_or_create_by(name: job['employer']['name']),
+      tag_list: job['subjects'].map { |x| x['name'] }.join(',')
     )
   end
 end

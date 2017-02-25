@@ -7,4 +7,6 @@ class Job < ApplicationRecord
   scope :published, ->() { where(published: true) }
   
   default_scope { order(published_at: :desc, created_at: :desc) }
+  
+  acts_as_taggable
 end

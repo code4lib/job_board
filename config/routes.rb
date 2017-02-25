@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :jobs
   resources :employers
+  resources :tags, only: [:index, :show]
   devise_for :users
 
   root to: 'jobs#index'

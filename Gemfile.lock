@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/mbleigh/acts-as-taggable-on.git
+  revision: a52814cd12599107a2f630a383b6caa62d5b232f
+  specs:
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
+
+GIT
   remote: https://github.com/rails/sass-rails.git
   revision: dfbcc6a53653d8908007e26324a0f299f026ec4f
   specs:
@@ -261,6 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   bootstrap (~> 4.x)
   bootstrap_form
   byebug
