@@ -7,10 +7,8 @@ RSpec.describe "jobs/edit", type: :view do
       :origin => "MyString",
       :url => "MyString",
       :description => "MyText",
-      :user => "",
-      :type => 1,
+      :job_type => :full_time,
       :telecommute => false,
-      :employer => "",
       :location => "MyText",
       :contact => "MyText",
       :published => false
@@ -32,7 +30,7 @@ RSpec.describe "jobs/edit", type: :view do
 
       assert_select "input#job_user[name=?]", "job[user]"
 
-      assert_select "input#job_type[name=?]", "job[type]"
+      assert_select "input#job_job_type[name=?]", "job[job_type]"
 
       assert_select "input#job_telecommute[name=?]", "job[telecommute]"
 

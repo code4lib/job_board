@@ -14,12 +14,12 @@
     <% jobs.each do |job| %>
       <tr>
         <td>
-          <div><%= l job.published_at.to_date %></div>
+          <div><%= l(job.published_at.to_date) if job.published_at %></div>
           <%= render_job_badge(job) %>
         </td>
         <td>
           <%= link_to job.title, job %>
-          <div><%= link_to job.employer.name, job.employer %></div>
+          <div><%= link_to job.employer.name, job.employer if job.employer %></div>
           <div class="small"><%= job.location%></div>
         </td>
         <td>

@@ -2,48 +2,36 @@ require 'rails_helper'
 
 RSpec.describe "jobs/index", type: :view do
   before(:each) do
-    assign(:jobs, [
+    assign(:jobs, Kaminari.paginate_array([
       Job.create!(
         :title => "Title",
-        :origin => "Origin",
-        :url => "Url",
+        :origin => "MyString",
+        :url => "MyString",
         :description => "MyText",
-        :user => "",
-        :type => 2,
+        :job_type => :full_time,
         :telecommute => false,
-        :employer => "",
-        :location => "MyText",
+        :location => "MyLocation",
         :contact => "MyText",
         :published => false
       ),
       Job.create!(
         :title => "Title",
-        :origin => "Origin",
-        :url => "Url",
+        :origin => "MyString",
+        :url => "MyString",
         :description => "MyText",
-        :user => "",
-        :type => 2,
+        :job_type => :full_time,
         :telecommute => false,
-        :employer => "",
-        :location => "MyText",
+        :location => "MyLocation",
         :contact => "MyText",
         :published => false
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of jobs" do
     render
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "Origin".to_s, :count => 2
-    assert_select "tr>td", :text => "Url".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
-    assert_select "tr>td", :text => false.to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => false.to_s, :count => 2
+    assert_select "tr>td", :text => "Full time".to_s, :count => 2
+    assert_select "tr>td>a", :text => "Title".to_s, :count => 2
+    assert_select "tr>td>.small", :text => "MyLocation".to_s, :count => 2
   end
 end

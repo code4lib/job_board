@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "employers/index", type: :view do
   before(:each) do
-    assign(:employers, [
+    assign(:employers, Kaminari.paginate_array([
       Employer.create!(
         :name => "Name",
         :description => "MyText",
-        :address => "MyText"
+        :address => "MyAddress"
       ),
       Employer.create!(
         :name => "Name",
         :description => "MyText",
-        :address => "MyText"
+        :address => "MyAddress"
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of employers" do

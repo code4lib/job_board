@@ -19,12 +19,15 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe JobsController, type: :controller do
+  before do
+    allow(controller).to receive(:current_user).and_return(instance_double(User, id: 1, admin?: true))
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Job. As you add validations to Job, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { title: 'xyz' }
   }
 
   let(:invalid_attributes) {
@@ -103,7 +106,7 @@ RSpec.describe JobsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { title: 'abc' }
       }
 
       it "updates the requested job" do

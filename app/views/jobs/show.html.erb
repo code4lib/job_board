@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @job.title %></h1>
-<div><%= link_to @job.employer&.name, @job.employer %> - <%= @job.location %></div>
+<div><%= link_to(@job.employer.name, @job.employer) if @job.employer %> - <%= @job.location %></div>
 <hr />
 
 <div class="row">
@@ -25,7 +25,7 @@
 
   <p>
     <strong>Published:</strong>
-    <%= l @job.published_at %>
+    <%= l(@job.published_at) if @job.published_at %>
   </p>
 
   <p>
