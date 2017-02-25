@@ -1,40 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Jobs</h1>
-
-<%= page_entries_info @jobs %>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Posted</th>
-      <th>Title</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td>
-          <div><%= l job.published_at.to_date %></div>
-          <%= render_job_badge(job) %>
-        </td>
-        <td>
-          <%= link_to job.title, job %>
-          <div><%= link_to job.employer.name, job.employer %></div>
-          <div class="small"><%= job.location%></div>
-        </td>
-        <% if can? :manage, job %>
-          <td><%= link_to 'Edit', edit_job_path(job) %></td>
-          <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
+<%= render 'table', jobs: @jobs %>
 <br>
 
 <%= link_to 'New Job', new_job_path if can? :create, Job %>
