@@ -16,7 +16,10 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= l job.published_at.to_date %></td>
+        <td>
+          <div><%= l job.published_at.to_date %></div>
+          <%= render_job_badge(job) %>
+        </td>
         <td>
           <%= link_to job.title, job %>
           <div><%= link_to job.employer.name, job.employer %></div>

@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170225210033) do
     t.text "description"
     t.string "description_markup"
     t.integer "user_id"
-    t.integer "type"
+    t.integer "job_type"
     t.boolean "telecommute"
     t.integer "employer_id"
     t.text "location"

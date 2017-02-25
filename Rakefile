@@ -16,7 +16,7 @@ task :import, [:file] => [:environment] do |t, args|
       description_markup: '.html',
       url: job['url'],
       telecommute: job['telecommute'],
-      type: job['type'].parameterize('_'),
+      job_type: job['type'].underscore,
       contact: job['contact']['name'],
       location: job['location']['name'],
       published: job['published'].present?,

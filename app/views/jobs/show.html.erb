@@ -10,6 +10,14 @@
   </div>
   
   <div class="col-md-4">
+    <p>
+      <%= render_job_badge(@job) %>
+    </p>
+  <p>
+    <strong>Telecommute:</strong>
+    <%= @job.telecommute %>
+  </p>
+
   <p>
     <strong>Published:</strong>
     <%= l @job.published_at %>
@@ -28,16 +36,6 @@
   <p>
     <strong>User:</strong>
     <%= @job.user %>
-  </p>
-
-  <p>
-    <strong>Type:</strong>
-    <%= @job.type %>
-  </p>
-
-  <p>
-    <strong>Telecommute:</strong>
-    <%= @job.telecommute %>
   </p>
 
   <p>

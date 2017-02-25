@@ -7,7 +7,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :description
       t.string :description_markup
       t.references :user
-      t.integer :type
+      t.integer :job_type
       t.boolean :telecommute
       t.references :employer
       t.text :location
