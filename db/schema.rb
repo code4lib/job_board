@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170225191019) do
     t.text "location"
     t.text "contact"
     t.boolean "published"
+    t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employer_id"], name: "index_jobs_on_employer_id"

@@ -13,6 +13,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :location
       t.text :contact
       t.boolean :published
+      t.datetime :published_at
 
       t.timestamps
     end

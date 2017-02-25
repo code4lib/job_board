@@ -6,9 +6,26 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= content_for :head %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">code4lib jobs</a>
+
+      <div class="collapse navbar-collapse" id="navbarsMain">
+        <ul class="navbar-nav mr-auto">
+          <%= nav_link 'Jobs', root_path %>
+          <%= nav_link 'Employers', employers_path %>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

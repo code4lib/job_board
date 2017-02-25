@@ -1,4 +1,4 @@
-<%= form_for(employer) do |f| %>
+<%= bootstrap_form_for(employer) do |f| %>
   <% if employer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(employer.errors.count, "error") %> prohibited this employer from being saved:</h2>
@@ -12,21 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
 
   <div class="field">
-    <%= f.label :address %>
     <%= f.text_area :address %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

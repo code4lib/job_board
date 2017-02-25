@@ -63,3 +63,7 @@ gem 'omniauth-oauth2'
 gem 'omniauth-twitter'
 
 gem 'cancancan'
+
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.x'
+gem 'bootstrap_form'
