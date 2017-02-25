@@ -1,59 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<h1><%= @job.title %></h1>
+<div><%= @job.employer&.name %> - <%= @job.location %></div>
+<hr />
 
-<p>
-  <strong>Origin:</strong>
-  <%= @job.origin %>
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <%= render_marked_up_description @job.description, format: @job.description_markup %>
+  </div>
+  
+  <div class="col-md-4">
+  <p>
+    <strong>Published:</strong>
+    <%= l @job.published_at %>
+  </p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @job.url %>
-</p>
+  <p>
+    <strong>Origin:</strong>
+    <%= @job.origin %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= render_marked_up_description @job.description, format: @job.description_markup %>
-</p>
+  <p>
+    <strong>Url:</strong>
+    <%= @job.url %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @job.user %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <%= @job.user %>
+  </p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @job.type %>
-</p>
+  <p>
+    <strong>Type:</strong>
+    <%= @job.type %>
+  </p>
 
-<p>
-  <strong>Telecommute:</strong>
-  <%= @job.telecommute %>
-</p>
+  <p>
+    <strong>Telecommute:</strong>
+    <%= @job.telecommute %>
+  </p>
 
-<p>
-  <strong>Employer:</strong>
-  <%= @job.employer.name %>
-</p>
+  <p>
+    <strong>Employer:</strong>
+    <%= @job.employer.name %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @job.location %>
-</p>
+  <p>
+    <strong>Location:</strong>
+    <%= @job.location %>
+  </p>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @job.contact %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @job.published %>
-</p>
+  <p>
+    <strong>Contact:</strong>
+    <%= @job.contact %>
+  </p>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

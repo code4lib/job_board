@@ -4,11 +4,11 @@
 
 <%= page_entries_info @jobs %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Posted</th>
       <th>Title</th>
-      <th>Employer</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -16,8 +16,12 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= link_to job.title, job %></td>
-        <td><%= job.employer.name %></td>
+        <td><%= l job.published_at.to_date %></td>
+        <td>
+          <%= link_to job.title, job %>
+          <div><%= job.employer.name %></div>
+          <div class="small"><%= job.location%></div>
+        </td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
