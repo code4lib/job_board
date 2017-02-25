@@ -1,0 +1,72 @@
+<%= form_for(job) do |f| %>
+  <% if job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :origin %>
+    <%= f.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type %>
+    <%= f.number_field :type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telecommute %>
+    <%= f.check_box :telecommute %>
+  </div>
+
+  <div class="field">
+    <%= f.label :employer %>
+    <%= f.text_field :employer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact %>
+    <%= f.text_area :contact %>
+  </div>
+
+  <div class="field">
+    <%= f.label :published %>
+    <%= f.check_box :published %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

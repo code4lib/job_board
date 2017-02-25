@@ -1,0 +1,32 @@
+<%= form_for(employer) do |f| %>
+  <% if employer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employer.errors.count, "error") %> prohibited this employer from being saved:</h2>
+
+      <ul>
+      <% employer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

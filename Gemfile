@@ -61,3 +61,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-oauth2'
 gem 'omniauth-twitter'
+
+gem 'cancancan'
