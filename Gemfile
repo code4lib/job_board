@@ -70,7 +70,9 @@ gem 'bootstrap', '~> 4.x'
 gem 'bootstrap_form'
 
 gem 'rails-html-sanitizer'
-gem 'github-markup'
+gem 'github-markup', require: 'github/markup'
+gem 'redcarpet'
+
 gem 'kaminari'
 gem 'friendly_id'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
