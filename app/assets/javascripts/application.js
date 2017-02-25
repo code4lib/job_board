@@ -15,4 +15,7 @@
 //= require jquery
 //= require tether
 //= require bootstrap
+//= require bloodhound
+//= require typeahead.jquery.js
+//= require bootstrap-tagsinput
 //= require_tree .

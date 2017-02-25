@@ -11,49 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :origin %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :url %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :user %>
-  </div>
-
-  <div class="field">
-    <%= f.number_field :job_type %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :telecommute %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :employer %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :location %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :contact %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :published %>
-  </div>
+  <%= f.text_field :title %>
+  <%= f.text_field :url %>
+  <%= f.text_area :description, rows: 15 %>
+  <%= f.text_area :location %>
+  <%= f.text_area :contact %>  
+  <%= f.select :employer_id, Employer.all.map { |e| [e.name, e.id] } %>
+  <%= f.select :job_type, Job.job_types.keys.map { |t| [t.humanize, t] } %>
+  <%= f.check_box :telecommute %>
+  <%= f.text_field :tag_list, value: f.object.tag_list.join(',') %>
 
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>

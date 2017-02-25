@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap-tagsinput
  *= require_self
  */
  
@@ -19,4 +20,16 @@
 
 body {
   margin-top: 5rem;
+}
+
+.bootstrap-tagsinput {
+  @extend .form-control;
+  
+  .label {
+    @extend .badge;
+  }
+  
+  .label-info {
+    @extend .badge-info;
+  }
 }
