@@ -67,3 +67,5 @@ gem 'cancancan'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.x'
 gem 'bootstrap_form'
+
+gem 'github-markup'
