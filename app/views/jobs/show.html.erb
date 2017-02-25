@@ -17,7 +17,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @job.description %>
+  <%= render_marked_up_description @job.description, format: @job.description_markup %>
 </p>
 
 <p>
@@ -37,7 +37,7 @@
 
 <p>
   <strong>Employer:</strong>
-  <%= @job.employer %>
+  <%= @job.employer.name %>
 </p>
 
 <p>

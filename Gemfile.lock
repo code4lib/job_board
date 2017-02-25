@@ -265,6 +265,7 @@ DEPENDENCIES
   omniauth-twitter
   puma (~> 3.7)
   rails (~> 5.1.0.beta1)
+  rails-html-sanitizer
   rspec-rails
   sass-rails!
   selenium-webdriver

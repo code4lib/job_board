@@ -7,4 +7,13 @@ module ApplicationHelper
       end
     end
   end
+
+  def render_marked_up_description(content, format:)
+    case format
+    when '.html'
+      sanitize content
+    else
+      GitHub::Markup.render(format || '.md', content).html_safe
+    end
+  end
 end
