@@ -22,8 +22,10 @@
           <div><%= job.employer.name %></div>
           <div class="small"><%= job.location%></div>
         </td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :manage, job %>
+          <td><%= link_to 'Edit', edit_job_path(job) %></td>
+          <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
 <br>
 
-<%= link_to 'New Job', new_job_path %>
+<%= link_to 'New Job', new_job_path if can? :create, Job %>

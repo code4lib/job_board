@@ -19,9 +19,10 @@
         <td><%= link_to employer.name, employer %></td>
         <td><%= employer.description %></td>
         <td><%= employer.address %></td>
-        <td><%= link_to 'Show', employer %></td>
-        <td><%= link_to 'Edit', edit_employer_path(employer) %></td>
-        <td><%= link_to 'Destroy', employer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :manage, employer %>
+          <td><%= link_to 'Edit', edit_employer_path(employer) %></td>
+          <td><%= link_to 'Destroy', employer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Employer', new_employer_path %>
+<%= link_to 'New Employer', new_employer_path if can? :create, Employer%>
