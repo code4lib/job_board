@@ -10,5 +10,7 @@ class Job < ApplicationRecord
   
   default_scope { order(published_at: :desc, created_at: :desc) }
   
+  validates :title, :description, :url, presence: true
+
   acts_as_taggable
 end

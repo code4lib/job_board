@@ -22,25 +22,19 @@ RSpec.describe "jobs/edit", type: :view do
 
       assert_select "input#job_title[name=?]", "job[title]"
 
-      assert_select "input#job_origin[name=?]", "job[origin]"
-
       assert_select "input#job_url[name=?]", "job[url]"
 
       assert_select "textarea#job_description[name=?]", "job[description]"
 
-      assert_select "input#job_user[name=?]", "job[user]"
-
-      assert_select "input#job_job_type[name=?]", "job[job_type]"
+      assert_select "select#job_job_type[name=?]", "job[job_type]"
 
       assert_select "input#job_telecommute[name=?]", "job[telecommute]"
 
-      assert_select "input#job_employer[name=?]", "job[employer]"
+      assert_select "select#job_employer_id[name=?]", "job[employer_id]"
 
       assert_select "textarea#job_location[name=?]", "job[location]"
 
       assert_select "textarea#job_contact[name=?]", "job[contact]"
-
-      assert_select "input#job_published[name=?]", "job[published]"
     end
   end
 end

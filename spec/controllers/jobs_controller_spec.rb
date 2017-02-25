@@ -27,11 +27,11 @@ RSpec.describe JobsController, type: :controller do
   # Job. As you add validations to Job, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { title: 'xyz' }
+    { title: 'xyz', description: 'xyz', url: 'http://' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { title: '' }
   }
 
   # This should return the minimal set of values that should be in the session
