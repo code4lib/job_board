@@ -19,7 +19,7 @@
         <td><%= l job.published_at.to_date %></td>
         <td>
           <%= link_to job.title, job %>
-          <div><%= job.employer.name %></div>
+          <div><%= link_to job.employer.name, job.employer %></div>
           <div class="small"><%= job.location%></div>
         </td>
         <% if can? :manage, job %>

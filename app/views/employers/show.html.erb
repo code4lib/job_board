@@ -1,19 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @employer.name %>
-</p>
+<h1><%= @employer.name %></h1>
 
 <p>
-  <strong>Description:</strong>
   <%= @employer.description %>
 </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @employer.address %>
-</p>
+<% if @employer.address %>
+  <p>
+    <strong>Address:</strong>
+    <%= @employer.address %>
+  </p>
+<% end %>
+
+<h2>Jobs <span class="badge badge-default"><%= @employer.jobs.count %></span></h2>
+<%= render @employer.jobs %>
 
 <%= link_to 'Edit', edit_employer_path(@employer) %> |
 <%= link_to 'Back', employers_path %>

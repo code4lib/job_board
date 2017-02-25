@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @job.title %></h1>
-<div><%= @job.employer&.name %> - <%= @job.location %></div>
+<div><%= link_to @job.employer&.name, @job.employer %> - <%= @job.location %></div>
 <hr />
 
 <div class="row">
@@ -38,16 +38,6 @@
   <p>
     <strong>Telecommute:</strong>
     <%= @job.telecommute %>
-  </p>
-
-  <p>
-    <strong>Employer:</strong>
-    <%= @job.employer.name %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= @job.location %>
   </p>
 
   <p>
