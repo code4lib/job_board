@@ -70,3 +70,4 @@ gem 'bootstrap_form'
 
 gem 'rails-html-sanitizer'
 gem 'github-markup'
+gem 'kaminari'

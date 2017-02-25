@@ -2,21 +2,22 @@
 
 <h1>Jobs</h1>
 
+<%= page_entries_info @jobs %>
+
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Employer</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.title %></td>
+        <td><%= link_to job.title, job %></td>
         <td><%= job.employer.name %></td>
-        <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -24,6 +25,7 @@
   </tbody>
 </table>
 
+<%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
 <br>
 
 <%= link_to 'New Job', new_job_path %>
