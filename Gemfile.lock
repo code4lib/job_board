@@ -91,6 +91,8 @@ GEM
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.17)
+    friendly_id (5.2.0)
+      activerecord (>= 4.0.0)
     github-markup (1.4.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -266,6 +268,7 @@ DEPENDENCIES
   capybara (~> 2.7.0)
   coffee-rails (~> 4.2)
   devise
+  friendly_id
   github-markup
   jbuilder (~> 2.5)
   jquery-rails
