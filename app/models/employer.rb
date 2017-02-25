@@ -1,4 +1,6 @@
 class Employer < ApplicationRecord
+  has_paper_trail
+
   extend FriendlyId
 
   has_many :jobs

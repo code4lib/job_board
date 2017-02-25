@@ -1,4 +1,6 @@
 class Job < ApplicationRecord
+  has_paper_trail ignore: [:published, :published_at]
+
   belongs_to :user
   belongs_to :employer
 
