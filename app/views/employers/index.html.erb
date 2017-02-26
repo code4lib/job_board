@@ -20,15 +20,11 @@
         <td><%= employer.description %></td>
         <td><%= employer.address %></td>
         <% if can? :manage, employer %>
-          <td><%= link_to 'Edit', edit_employer_path(employer) %></td>
-          <td><%= link_to 'Destroy', employer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_employer_path(employer), class: 'btn btn-secondary' %></td>
+          <td><%= link_to 'Destroy', employer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= paginate @employers, theme: 'twitter-bootstrap-4' %>
-
-<br>
-
-<%= link_to 'New Employer', new_employer_path if can? :create, Employer%>

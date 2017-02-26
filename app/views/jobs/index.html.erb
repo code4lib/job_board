@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'New Job', new_job_path, class: 'btn btn-primary float-right' if can? :create, Job %>
 
 <h1>Jobs</h1>
 <%= render 'table', jobs: @jobs %>
 
 <br>
 
-<%= link_to 'New Job', new_job_path if can? :create, Job %>
+<%= link_to 'New Job', new_job_path, class: 'btn btn-primary' if can? :create, Job %>

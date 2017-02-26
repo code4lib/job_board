@@ -52,7 +52,7 @@
   </p>
 
   <% if can? :edit, @job %>
-    <%= link_to 'Edit', edit_job_path(@job) %>
+    <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
   <% end %>
   </div>
 </div>
