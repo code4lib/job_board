@@ -11,15 +11,24 @@
     </div>
   <% end %>
 
-  <%= f.text_field :title %>
-  <%= f.text_field :url %>
-  <%= f.text_area :description, rows: 15 %>
-  <%= f.text_area :location %>
-  <%= f.text_area :contact %>
-  <%= f.text_field :employer_name %>
-  <%= f.select :job_type, Job.job_types.keys.map { |t| [t.humanize, t] } %>
-  <%= f.check_box :telecommute %>
-  <%= f.text_field :tag_list, value: f.object.tag_list.join(',') %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.text_field :title %>
+      <%= f.text_area :description, rows: 15 %>
+      <%= f.text_field :tag_list, value: f.object.tag_list.join(',') %>
+    </div>
+    <div class="col-md-4">
+      <%= f.text_field :url %>
+      <%= f.text_area :contact %>
+
+      <%= f.text_field :employer_name %>
+      <%= f.text_area :location %>
+      <hr />
+      <%= f.select :job_type, Job.job_types.keys.map { |t| [t.humanize, t] } %>
+      <%= f.check_box :telecommute %>
+    </div>
+  </div>
+  
 
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
