@@ -5,6 +5,11 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = @jobs.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /jobs/1
