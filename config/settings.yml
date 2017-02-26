@@ -1,0 +1,7 @@
+code4lib:
+  oauth:
+    client_options: {}
+    app_id:
+    app_secret:
+
+administrators: []

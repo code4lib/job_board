@@ -22,6 +22,14 @@
           <%= nav_link 'Tags', tags_path %>
           <%= nav_link 'Employers', employers_path %>
         </ul>
+        
+        <ul class="navbar-nav pull-right">
+          <% if current_user %>
+            <li class="nav-item navbar-text"><%= current_user.uid %></li>
+          <% else %>
+            <%= nav_link 'Login', user_code4lib_omniauth_authorize_path %>
+          <% end %>
+        </ul>
       </div>
     </nav>
 
