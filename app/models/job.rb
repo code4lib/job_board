@@ -7,7 +7,7 @@ class Job < ApplicationRecord
   enum job_type: [:full_time, :part_time, :temporary, :contract, :internship, :rfp, :contest]
 
   scope :published, ->() { where(published: true) }
-  
+  scope :recent, ->() { published.where('created_at >= ?', 2.months.ago) }
   default_scope { order(published_at: :desc, created_at: :desc) }
   
   validates :title, :description, :url, presence: true

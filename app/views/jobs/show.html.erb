@@ -2,6 +2,10 @@
 
 <h1><%= @job.title %></h1>
 <div><%= link_to(@job.employer.name, @job.employer) if @job.employer %> - <%= @job.location %></div>
+
+<% if @job.employer %>
+  <small><%= @job.employer.jobs.recent.where.not(id: @job.id).count %> other recent jobs</small>
+<% end %>
 <hr />
 
 <div class="row">
