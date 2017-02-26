@@ -23,33 +23,32 @@
     <%= @job.telecommute %>
   </p>
   
-  <% @job.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
-  <% end %>
-
   <p>
-    <strong>Published:</strong>
-    <%= l(@job.published_at) if @job.published_at %>
+    <% @job.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
+    <% end %>
   </p>
 
-  <p>
-    <strong>Origin:</strong>
-    <%= @job.origin %>
-  </p>
+  <h3>How to apply</h3>
 
   <p>
-    <strong>Url:</strong>
-    <%= @job.url %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @job.user %>
+    <%= link_to @job.url, @job.url %>
   </p>
 
   <p>
     <strong>Contact:</strong>
     <%= @job.contact %>
+  </p>
+
+  <h3 class="h5">Metadata</h3>
+  <p>
+    <strong>Submitted by:</strong>
+    <%= @job.user&.uid %>
+  </p>
+
+  <p>
+    <strong>Published:</strong>
+    <%= l(@job.published_at) if @job.published_at %>
   </p>
 
   <% if can? :edit, @job %>
