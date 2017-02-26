@@ -13,6 +13,10 @@ $(function() {
   });
 
   $(document).on('turbolinks:load', function() {
+    $('.publish[data-remote]').on('ajax:success', function() {
+      $(this).closest('tr').remove();
+    });
+
     if($('#job_employer_name').length > 0) {
       employers.initialize();
     }

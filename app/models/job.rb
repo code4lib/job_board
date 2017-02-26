@@ -7,6 +7,8 @@ class Job < ApplicationRecord
   enum job_type: [:full_time, :part_time, :temporary, :contract, :internship, :rfp, :contest]
 
   scope :published, ->() { where(published: true) }
+  scope :unpublished, ->() { where(published: false) }
+
   scope :recent, ->() { published.where('created_at >= ?', 2.months.ago) }
   default_scope { order(published_at: :desc, created_at: :desc) }
   
@@ -20,5 +22,9 @@ class Job < ApplicationRecord
   
   def employer_name=(value)
     self.employer = Employer.find_or_create_by(name: value)
+  end
+
+  def publish!
+    update(published: true, published_at: Time.now)
   end
 end
