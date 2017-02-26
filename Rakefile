@@ -4,26 +4,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-
-
-task :import, [:file] => [:environment] do |t, args|
-  old_jobs_data = JSON.parse(File.read(File.expand_path(ENV['FILE'] || args[:file])))
-  old_jobs_data.each do |job|
-    Job.create(
-      id: job['id'],
-      title: job['title'],
-      description: job['description'],
-      description_markup: '.html',
-      url: job['url'],
-      telecommute: job['telecommute'],
-      job_type: job['type'].underscore,
-      contact: job['contact']['name'],
-      location: job['location']['name'],
-      published: job['published'].present?,
-      created_at: job['published'],
-      published_at: job['published'],
-      employer: Employer.find_or_create_by(name: job['employer']['name']),
-      tag_list: job['subjects'].map { |x| x['name'] }.join(',')
-    )
-  end
-end

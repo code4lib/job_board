@@ -18,6 +18,14 @@ $ rails server
 
 The application should be available at http://127.0.0.1:3000.
 
+### Loading seeds
+
+Fetch the `dump.tar.gz` file from https://archive.org/details/jobs.code4lib.org and extract it into `./tmp/dump`.
+
+```
+$ rake db:seed
+```
+
 ## Tests
 
 To run the tests:
