@@ -12,6 +12,6 @@ module JobsHelper
                   else
                     'badge-default'
                   end
-    content_tag :div, job.job_type.humanize, class: "badge #{badge_class}"
+    link_to job.job_type.humanize, type_jobs_path(job_type: job.job_type), class: "badge #{badge_class}"
   end
 end

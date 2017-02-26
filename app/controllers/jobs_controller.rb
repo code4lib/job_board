@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
+    @jobs = @jobs.where(job_type: params[:job_type]) if params[:job_type]
     @jobs = @jobs.page(params[:page])
 
     respond_to do |format|
