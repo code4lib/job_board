@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1 class="display-3">Code4Lib Jobs</h1>
+      <p class="lead">
+        <a href="http://code4lib.org">code4lib</a> is a niche within a niche: 
+        an international community of software developers, designers and 
+        architects who happen to work in the cultural heritage sector 
+        (libraries, archives, museums, galleries, etc). There are a lot 
+        of esoteric tools, projects and people to know. The idea is that 
+        this job board can help 
+        people get an idea of what kinds of skills and experience are useful 
+        to acquire.
+      </p>
+      <%= link_to 'Post new job', new_job_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h1>Recently posted jobs</h1>
+    <%= render 'jobs/table', jobs: @jobs, show_pagination: false %>
+    <%= link_to 'All jobs ->', jobs_path, class: 'btn btn-primary' %>
+  </div>
+</div>

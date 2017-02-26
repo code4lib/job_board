@@ -3,7 +3,7 @@
 <% end %>
 
 <p id="notice"><%= notice %></p>
-<%= link_to 'New Job', new_job_path, class: 'btn btn-primary float-right' if can? :create, Job %>
+<%= link_to 'Post new job', new_job_path, class: 'btn btn-primary float-right' if can? :create, Job %>
 
 <h1><%= params[:job_type].humanize if params[:job_type] %> Jobs</h1>
 <%= render 'table', jobs: @jobs %>
