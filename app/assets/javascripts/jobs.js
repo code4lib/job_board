@@ -1,8 +1,8 @@
 $(function() {
   var employers = new Bloodhound({
+    initialize: false,
     datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    // limit: 100,
     prefetch: {
       url: '/employers.json',
       ttl: 1,
@@ -12,8 +12,11 @@ $(function() {
     }
   });
 
-  employers.initialize();
   $(document).on('turbolinks:load', function() {
+    if($('#job_employer_name').length > 0) {
+      employers.initialize();
+    }
+
     $('#job_employer_name').typeahead({
         highlight: true,
         minLength: 0
