@@ -2,6 +2,9 @@
 
 A Ruby on Rails job post aggregator for the code4lib community.
 
+[![Build Status](https://travis-ci.org/cbeer/job_board.svg?branch=master)](http://travis-ci.org/cbeer/job_board)
+[![Code Climate](https://codeclimate.com/github/cbeer/job_board/badges/gpa.svg)](https://codeclimate.com/github/cbeer/job_board)
+[![Coverage Status](https://coveralls.io/repos/cbeer/job_board/badge.svg)](https://coveralls.io/r/cbeer/job_board)
 ## Installing
 
 To install the Job Board, you need the following:

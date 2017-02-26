@@ -42,6 +42,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'coveralls'
+  gem 'simplecov'
 end
 
 group :development do
