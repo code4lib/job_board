@@ -1,3 +1,7 @@
+<% content_for(:head) do %>
+  <%= auto_discovery_link_tag :atom, format: :atom %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 <%= link_to 'New Job', new_job_path, class: 'btn btn-primary float-right' if can? :create, Job %>
 
