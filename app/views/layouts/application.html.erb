@@ -29,6 +29,9 @@
           <% else %>
             <%= nav_link 'Login', user_code4lib_omniauth_authorize_path %>
           <% end %>
+          <li class="nav-item form-inline">
+            <%= link_to 'Post new job', new_job_path, class: 'btn btn-outline-secondary' if can? :create, Job %>
+          </li>
         </ul>
       </div>
     </nav>
