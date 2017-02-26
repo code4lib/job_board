@@ -1,24 +1,29 @@
-# README
+# Job Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails job post aggregator for the code4lib community.
 
-Things you may want to cover:
+## Installing
 
-* Ruby version
+To install the Job Board, you need the following:
 
-* System dependencies
+- Ruby 2.3 or greater
+- A database engine, e.g. MySQL, Postgresql, or SQLite3 
+- A compatible JavaScript installation for asset compilation (see https://github.com/sstephenson/execjs#readme)
 
-* Configuration
+```console
+$ bin/setup
+$ rake db:migrate
+$ rails server
+```
 
-* Database creation
+The application should be available at http://127.0.0.1:3000.
 
-* Database initialization
+## Tests
 
-* How to run the test suite
+To run the tests:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```console
+$ rake
+# or
+$ rspec
+```
