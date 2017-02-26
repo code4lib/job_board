@@ -13,4 +13,12 @@ class Job < ApplicationRecord
   validates :title, :description, :url, presence: true
 
   acts_as_taggable
+  
+  def employer_name
+    employer&.name
+  end
+  
+  def employer_name=(value)
+    self.employer = Employer.find_or_create_by(name: value)
+  end
 end
