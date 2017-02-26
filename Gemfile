@@ -78,6 +78,8 @@ gem 'friendly_id'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 gem 'paper_trail'
 
+gem 'config'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
