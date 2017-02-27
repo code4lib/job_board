@@ -21,7 +21,7 @@
           <%= nav_link 'Jobs', jobs_path %>
           <%= nav_link 'Tags', tags_path %>
           <%= nav_link 'Employers', employers_path %>
-          <%= nav_link 'Moderation', moderate_jobs_path if can? :moderate, Job %>
+          <%= nav_link moderation_text_with_badge, moderate_jobs_path if can? :moderate, Job %>
         </ul>
         
         <ul class="navbar-nav pull-right">
