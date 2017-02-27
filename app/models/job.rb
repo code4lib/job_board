@@ -4,7 +4,7 @@ class Job < ApplicationRecord
   belongs_to :user
   belongs_to :employer
 
-  enum job_type: [:full_time, :part_time, :temporary, :contract, :internship, :rfp, :contest]
+  enum job_type: [:full_time, :part_time, :temporary, :contract, :internship, :rfp, :contest, :uncategorized]
 
   scope :published, ->() { where(published: true) }
   scope :unpublished, ->() { where(published: false) }
@@ -15,7 +15,7 @@ class Job < ApplicationRecord
 
   default_scope { order(published_at: :desc, created_at: :desc) }
   
-  validates :title, :description, :url, :job_type, :employer, presence: true
+  validates :title, :description, :url, :job_type, presence: true
 
   acts_as_taggable
 
@@ -30,7 +30,7 @@ class Job < ApplicationRecord
   end
 
   def employer_name
-    employer.name
+    employer&.name
   end
   
   def employer_name=(value)
