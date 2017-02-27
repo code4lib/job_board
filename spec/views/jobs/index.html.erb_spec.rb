@@ -12,7 +12,8 @@ RSpec.describe "jobs/index", type: :view do
         :telecommute => false,
         :location => "MyLocation",
         :contact => "MyText",
-        :published => false
+        :published => false,
+        :employer_name => 'foo'
       ),
       Job.create!(
         :title => "Title",
@@ -23,7 +24,8 @@ RSpec.describe "jobs/index", type: :view do
         :telecommute => false,
         :location => "MyLocation",
         :contact => "MyText",
-        :published => false
+        :published => false,
+        :employer_name => 'foo'
       )
     ]).page(1))
   end

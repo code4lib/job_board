@@ -28,7 +28,7 @@ RSpec.describe JobsController, type: :controller do
   # Job. As you add validations to Job, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { title: 'xyz', description: 'xyz', url: 'http://' }
+    { title: 'xyz', description: 'xyz', url: 'http://', job_type: 'full_time', employer_name: 'foo corp' }
   }
 
   let(:invalid_attributes) {

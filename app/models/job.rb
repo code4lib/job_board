@@ -15,14 +15,14 @@ class Job < ApplicationRecord
 
   default_scope { order(published_at: :desc, created_at: :desc) }
   
-  validates :title, :description, :url, presence: true
+  validates :title, :description, :url, :job_type, :employer, presence: true
 
   acts_as_taggable
 
   after_save :send_job_email, if: :just_published?
 
   def employer_name
-    employer&.name
+    employer.name
   end
   
   def employer_name=(value)

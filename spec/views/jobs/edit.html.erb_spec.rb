@@ -11,7 +11,8 @@ RSpec.describe "jobs/edit", type: :view do
       :telecommute => false,
       :location => "MyText",
       :contact => "MyText",
-      :published => false
+      :published => false,
+      :employer_name => 'foo'
     ))
   end
 
