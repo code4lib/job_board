@@ -15,7 +15,7 @@
     <% jobs.each do |job| %>
       <tr>
         <td>
-          <div><%= job.published_at? ? l(job.published_at.to_date) : 'Unpublished'%></div>
+          <div><%= l job.created_at.to_date %></div>
           <%= render_job_badge(job) %>
         </td>
         <td>
