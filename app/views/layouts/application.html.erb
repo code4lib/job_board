@@ -21,14 +21,15 @@
           <%= nav_link 'Jobs', jobs_path %>
           <%= nav_link 'Tags', tags_path %>
           <%= nav_link 'Employers', employers_path %>
-          <%= nav_link moderation_text_with_badge, moderate_jobs_path if can? :moderate, Job %>
+          <%= nav_link moderation_text_with_badge, moderate_jobs_path if can? :moderate, Job.all %>
         </ul>
         
         <ul class="navbar-nav pull-right">
           <% if current_user %>
             <li class="nav-item navbar-text"><%= current_user.uid %></li>
+            <%= nav_link 'Logout', destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= nav_link 'Login', user_code4lib_omniauth_authorize_path %>
+            <%= nav_link 'Login', user_login_path %>
           <% end %>
           <li class="nav-item form-inline">
             <%= link_to 'Post new job', new_job_path, class: 'btn btn-outline-secondary' if can? :create, Job %>

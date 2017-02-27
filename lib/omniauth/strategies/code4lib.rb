@@ -1,6 +1,6 @@
 class OmniAuth::Strategies::Code4lib < OmniAuth::Strategies::OAuth2
   option :name, :code4lib
-  option :client_options, Settings.code4lib.oauth.client_options
+  option :client_options, Settings.oauth.code4lib.client_options
   option :scope, "openid offline_access email profile"
 
   uid { raw_info['sub'] }

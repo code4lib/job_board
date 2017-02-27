@@ -274,5 +274,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   
-  config.omniauth :code4lib, Settings.code4lib.oauth.app_id, Settings.code4lib.oauth.app_secret
+  Settings.oauth.each do |provider, c|
+    config.omniauth provider, c.app_id, c.app_secret
+  end
 end

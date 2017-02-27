@@ -1,0 +1,28 @@
+<h1>Login</h1>
+
+<p>
+  You probably don't want to create <em>another</em> username and 
+       password; and you probably already have an account on code4lib.org or 
+       Github, right?
+ </p>
+<p>
+  Log in with one of those by clicking on one of the icons below:
+</p>
+
+<div class="col-md-6">
+  <ul class="nav nav-pills nav-fill">
+  <% User.omniauth_providers.each do |p| %>
+    <li class="nav-item">
+      <%= link_to public_send("user_#{p}_omniauth_authorize_path"), class: 'nav-link' do %>
+        <%= image_tag "auth/#{p}.png", title: p.to_s.humanize, alt: p.to_s.humanize %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<p>
+Or, fine, create a local account:
+
+<%= link_to 'Login', new_user_session_path, class: 'btn btn-secondary' %>
+</p>

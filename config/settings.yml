@@ -1,10 +1,10 @@
-code4lib:
-  oauth:
+oauth:
+  code4lib:
     client_options: {}
     app_id:
     app_secret:
 
-administrators: []
+administrators: {}
 
 mailers:
   single:
