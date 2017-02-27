@@ -1,0 +1,3 @@
+<%= strip_tags(render_marked_up_description @job.description, format: @job.description_markup) %>
+
+Brought to you by code4lib jobs: <%= job_url(@job) %>

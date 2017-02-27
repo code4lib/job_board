@@ -1,0 +1,18 @@
+<% @jobs.each_with_index do |job, index| %>
+<%= index + 1 %>. <%= job.title %> at <%= job.employer.name %>
+<% end %>
+
+------------------------
+
+<% @jobs.each_with_index do |job, index| %>
+## <%= index + 1 %>. <%= job.title %> at <%= job.employer.name %>
+Posted: <%= l job.published_at.to_date %>
+<%= job_url(job) %>
+
+Description:
+<%= strip_tags(render_marked_up_description(job.description, format: job.description_markup)) %>
+
+------------------------
+
+
+<% end %>

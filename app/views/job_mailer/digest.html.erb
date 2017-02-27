@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <ol>
+      <% @jobs.each_with_index do |job, index| %>
+        <li><%= job.title %> at <%= job.employer.name %></li>
+      <% end %>
+    </ol>
+
+    <hr />
+
+    <% @jobs.each_with_index do |job, index| %>
+      <div>
+        <h2><%= index + 1 %>. <%= job.title %> at <%= job.employer.name %></h2>
+        <div>
+          <%= link_to job_url(job), job %><br />
+          <small>Posted: <%= l job.published_at.to_date %></small>
+        </div>
+
+        <br /><br />
+        <%= render_marked_up_description(job.description, format: job.description_markup) %>
+
+      </div>
+
+      <hr />
+    <% end %>
+  </body>
+</html>

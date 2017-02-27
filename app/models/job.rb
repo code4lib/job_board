@@ -9,13 +9,18 @@ class Job < ApplicationRecord
   scope :published, ->() { where(published: true) }
   scope :unpublished, ->() { where(published: false) }
 
-  scope :recent, ->() { published.where('created_at >= ?', 2.months.ago) }
+  scope :published_since, ->(time) { published.where('created_at >= ?', time) }
+  scope :recent, ->() { published_since(2.months.ago) }
+  scope :from_last_week, ->() { published_since(1.week.ago) }
+
   default_scope { order(published_at: :desc, created_at: :desc) }
   
   validates :title, :description, :url, presence: true
 
   acts_as_taggable
-  
+
+  after_save :send_job_email, if: :just_published?
+
   def employer_name
     employer&.name
   end
@@ -26,5 +31,13 @@ class Job < ApplicationRecord
 
   def publish!
     update(published: true, published_at: Time.now)
+  end
+
+  def send_job_email
+    JobMailer.single(self).deliver_later
+  end
+
+  def just_published?
+    !attribute_before_last_save('published') && published?
   end
 end

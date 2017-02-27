@@ -5,3 +5,9 @@ code4lib:
     app_secret:
 
 administrators: []
+
+mailers:
+  single:
+    to:
+  digest:
+    to:
