@@ -7,6 +7,10 @@ FactoryGirl.define do
     
     factory :admin do
       uid 'admin'
+
+      after(:build) do |user, evaluator|
+        user.add_role :admin
+      end
     end
   end
 end

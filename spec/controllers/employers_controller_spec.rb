@@ -20,7 +20,7 @@ require 'rails_helper'
 
 RSpec.describe EmployersController, type: :controller do
   before do
-    allow(controller).to receive(:current_user).and_return(instance_double(User, id: 1, admin?: true))
+    allow(controller).to receive(:current_user).and_return(instance_double(User, id: 1, has_role?: true))
   end
 
   # This should return the minimal set of attributes required to create a valid

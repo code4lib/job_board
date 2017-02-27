@@ -84,6 +84,7 @@ gem 'paper_trail'
 gem 'config'
 
 gem 'whenever'
+gem 'rolify'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'

@@ -1,17 +1,11 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: Settings.oauth.keys
 
-  def admin?
-    provider ||= self.provider
-    provider ||= :local
-
-    Array(Settings.administrators[provider]).include?(uid || email)
-  end
-  
   def self.from_code4lib_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email

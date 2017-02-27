@@ -4,8 +4,6 @@ oauth:
     app_id:
     app_secret:
 
-administrators: {}
-
 mailers:
   single:
     to:

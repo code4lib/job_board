@@ -233,6 +233,7 @@ GEM
     request_store (1.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rolify (5.1.0)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -336,6 +337,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-html-sanitizer
   redcarpet
+  rolify
   rspec-rails
   sass-rails!
   selenium-webdriver
