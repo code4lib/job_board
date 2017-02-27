@@ -20,9 +20,9 @@ RSpec.describe "jobs/show", type: :view do
     expect(rendered).to match(/MyTitle/)
     expect(rendered).to have_link('Url', text: 'Url')
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/false/)
+    expect(rendered).not_to match(/Telecommute/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/false/)
+    expect(rendered).to have_selector '.badge-danger', text: 'Unpublished'
   end
 end

@@ -16,13 +16,11 @@
   <div class="col-md-4">
     <p>
       <%= render_job_badge(@job) %>
+      <% if @job.telecommute? %>
+        <span class="badge badge-info">Remote / Telecommute</span>
+      <% end %>
     </p>
 
-  <p>
-    <strong>Telecommute:</strong>
-    <%= @job.telecommute %>
-  </p>
-  
   <p>
     <% @job.tags.each do |tag| %>
       <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
@@ -31,25 +29,53 @@
 
   <h3>How to apply</h3>
 
+  <% if @job.url.present? %>
   <p>
     <%= link_to @job.url, @job.url %>
   </p>
+  <% end %>
 
+  <% if @job.contact.present? %>
   <p>
     <strong>Contact:</strong>
     <%= @job.contact %>
   </p>
+  <% end %>
 
   <h3 class="h5">Metadata</h3>
+
+  <% if @job.user %>
   <p>
     <strong>Submitted by:</strong>
     <%= @job.user&.uid %>
   </p>
+  <% end %>
 
   <p>
-    <strong>Published:</strong>
-    <%= l(@job.published_at) if @job.published_at %>
+    <strong>Created:</strong>
+    <%= l(@job.created_at) %>
   </p>
+
+  <% if @job.created_at != @job.updated_at %>
+  <p>
+    <strong>Updated:</strong>
+    <%= l(@job.updated_at) %>
+  </p>
+  <% end %>
+
+  <% if @job.published? %>
+  <p>
+    <strong>Published:</strong>
+    <%= l(@job.published_at) %>
+  </p>
+  <% else %>
+  <p>
+    <span class="badge badge-danger">Unpublished</span>
+    <% if can? :manage, @job %>
+      <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish', remote: true %>
+    <% end %>
+  </p>
+  <% end %>
 
   <% if can? :edit, @job %>
     <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
