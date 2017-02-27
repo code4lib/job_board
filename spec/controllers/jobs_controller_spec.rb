@@ -19,8 +19,9 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe JobsController, type: :controller do
+  let(:user) { FactoryGirl.build(:admin) }
   before do
-    allow(controller).to receive(:current_user).and_return(instance_double(User, id: 1, admin?: true))
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   # This should return the minimal set of attributes required to create a valid
@@ -72,10 +73,15 @@ RSpec.describe JobsController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Job" do
+      it "creates a new published Job" do
         expect {
           post :create, params: {job: valid_attributes}, session: valid_session
-        }.to change(Job, :count).by(1)
+        }.to change(Job.published, :count).by(1)
+      end
+
+      it "tracks the user that created the job" do
+        post :create, params: {job: valid_attributes}, session: valid_session
+        expect(assigns(:job).user).to eq user
       end
 
       it "assigns a newly created job as @job" do

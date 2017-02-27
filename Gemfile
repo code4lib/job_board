@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'coveralls'
   gem 'simplecov'
+  gem 'factory_girl_rails'
 end
 
 group :development do

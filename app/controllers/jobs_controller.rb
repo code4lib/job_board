@@ -21,7 +21,6 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    @job = Job.new
   end
 
   # GET /jobs/1/edit
@@ -31,8 +30,6 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
-
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -73,5 +70,14 @@ class JobsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
       params.require(:job).permit(:title, :url, :description, :user, :job_type, :telecommute, :employer_name, :location, :contact, :tag_list)
+    end
+
+    def create_params
+      job_params.merge(
+        user: current_user,
+        published: current_user.present?,
+        published_at: Time.now,
+        origin: request.original_url
+      )
     end
 end
