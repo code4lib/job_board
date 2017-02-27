@@ -22,3 +22,7 @@
 every :thursday, at: '12pm' do
   runner 'JobMailer.digest(Job.from_last_week).deliver_now'
 end
+
+every 3.hours do
+  runner 'FeedParser.harvest!'
+end
