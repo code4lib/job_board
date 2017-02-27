@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170225220042) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.string "origin"
+    t.string "source_id"
     t.string "url"
     t.text "description"
     t.string "description_markup"
@@ -45,11 +46,13 @@ ActiveRecord::Schema.define(version: 20170225220042) do
     t.integer "employer_id"
     t.text "location"
     t.text "contact"
-    t.boolean "published"
+    t.boolean "published", default: false, null: false
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employer_id"], name: "index_jobs_on_employer_id"
+    t.index ["published_at"], name: "index_jobs_on_published_at"
+    t.index ["source_id"], name: "index_jobs_on_source_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
