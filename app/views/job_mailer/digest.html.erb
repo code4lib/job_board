@@ -6,7 +6,7 @@
   <body>
     <ol>
       <% @jobs.each_with_index do |job, index| %>
-        <li><%= job.title %> at <%= job.employer.name %></li>
+        <li><%= job.display_title %></li>
       <% end %>
     </ol>
 
@@ -14,7 +14,7 @@
 
     <% @jobs.each_with_index do |job, index| %>
       <div>
-        <h2><%= index + 1 %>. <%= job.title %> at <%= job.employer.name %></h2>
+        <h2><%= index + 1 %>. <%= job.display_title %></h2>
         <div>
           <%= link_to job_url(job), job %><br />
           <small>Posted: <%= l job.published_at.to_date %></small>

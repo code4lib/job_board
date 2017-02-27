@@ -1,7 +1,7 @@
 class JobMailer < ApplicationMailer
   def single(job)
     @job = job
-    mail(to: Settings.mailers.single.to, subject: "#{@job.title} at #{@job.employer.name}")
+    mail(to: Settings.mailers.single.to, subject: job.display_title)
   end
   
   def digest(jobs)

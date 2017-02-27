@@ -1,11 +1,11 @@
 <% @jobs.each_with_index do |job, index| %>
-<%= index + 1 %>. <%= job.title %> at <%= job.employer.name %>
+<%= index + 1 %>. <%= job.display_title %>
 <% end %>
 
 ------------------------
 
 <% @jobs.each_with_index do |job, index| %>
-## <%= index + 1 %>. <%= job.title %> at <%= job.employer.name %>
+## <%= index + 1 %>. <%= job.display_title %>
 Posted: <%= l job.published_at.to_date %>
 <%= job_url(job) %>
 

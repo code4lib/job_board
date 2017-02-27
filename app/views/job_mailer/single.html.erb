@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <%= @job.title %> at <%= @job.employer.name %> (posted <%= l @job.published_at %>)
+    <%= @job.display_title %> (posted <%= l @job.published_at %>)
     
     <%= render_marked_up_description @job.description, format: @job.description_markup %>
 

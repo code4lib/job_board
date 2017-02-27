@@ -21,6 +21,14 @@ class Job < ApplicationRecord
 
   after_save :send_job_email, if: :just_published?
 
+  def display_title
+    if employer
+      "#{title} at #{employer.name}"
+    else
+      title
+    end
+  end
+
   def employer_name
     employer.name
   end
