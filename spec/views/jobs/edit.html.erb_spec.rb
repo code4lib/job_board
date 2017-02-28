@@ -33,7 +33,7 @@ RSpec.describe "jobs/edit", type: :view do
 
       assert_select "input#job_employer_name[name=?]", "job[employer_name]"
 
-      assert_select "textarea#job_location[name=?]", "job[location]"
+      assert_select "input#job_location[name=?]", "job[location]"
 
       assert_select "textarea#job_contact[name=?]", "job[contact]"
     end
