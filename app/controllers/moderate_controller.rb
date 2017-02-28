@@ -11,7 +11,7 @@ class ModerateController < ApplicationController
     @job.publish!
 
     respond_to do |format|
-      format.html { redirect_back(moderate_jobs_path) }
+      format.html { redirect_back(fallback_location: moderate_jobs_path) }
       format.js { head :ok }
     end
   end
