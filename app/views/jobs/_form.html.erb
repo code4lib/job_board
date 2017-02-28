@@ -13,28 +13,35 @@
 
   <div class="row">
     <div class="col-md-8">
-      <%= f.text_field :title, placeholder: 'Job title *', label_class: 'sr-only' %>
-      <%= f.text_field :employer_name, placeholder: 'Company name *', label: 'Company name', label_class: 'sr-only' %>
+      <%= f.text_field :title %>
+      <%= f.text_field :employer_name, label: 'Company name *' %>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.select :job_type, Job.job_types.keys.map { |t| [t.humanize, t] } %>
-        </div>
-        <div class="col-md-4">
-          <%= f.text_field :location, placeholder: 'City, State, Country' %>
-        </div>
-        <div class="col-md-4">
-          <span class="control-label">&nbsp; <!-- make the alignment work --></span>
-          <%= f.check_box :telecommute, label: 'Remote / Telecommute' %>
-        </div>
-      </div>
-
-      <%= f.cktext_area :description, rows: 15, placeholder: 'Job description *', label_class: 'sr-only' %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= f.select :job_type, Job.job_types.keys.map { |t| [t.humanize, t] } %>
     </div>
     <div class="col-md-4">
-      <%= f.text_field :tag_list, label: 'Tags', value: f.object.tag_list.join(',') %>
+      <%= f.text_field :location %>
+    </div>
+
+    <div class="col-md-2">
+      <label class="control-label hidden-sm-down">&nbsp;</label>
+      <%= f.check_box :telecommute, label: 'Remote / Telecommute' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.label :description %>
+      <%= f.cktext_area :description, rows: 15 %>
+    </div>
+    <div class="col-md-4">
+      <br />
       <%= f.text_field :url, label: 'URL for more information' %>
-      <%= f.text_area :contact, label: 'Contact information' %>
+      <%= f.text_area :contact, label: 'Contact information', rows: 4 %>
+      <%= f.text_field :tag_list, label: 'Tags', value: f.object.tag_list.join(',') %>
     </div>
   </div>
   
