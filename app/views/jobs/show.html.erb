@@ -46,7 +46,7 @@
     <% if @job.user %>
     <p>
       <strong>Submitted by:</strong>
-      <%= @job.user&.uid %>
+      <%= @job.user&.nickname || @job.user&.email %>
     </p>
     <% end %>
 
