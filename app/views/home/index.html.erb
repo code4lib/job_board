@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="jumbotron">
       <h1 class="display-3">Code4Lib Jobs</h1>
       <p class="lead">
@@ -15,9 +15,9 @@
       <%= link_to 'Post new job', new_job_path, class: 'btn btn-primary' %>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <h1>Recently posted jobs</h1>
     <%= render 'jobs/table', jobs: @jobs, show_pagination: false %>
-    <%= link_to 'All jobs ->', jobs_path, class: 'btn btn-primary' %>
+    <%= link_to 'View all jobs', jobs_path, class: 'btn btn-primary' %>
   </div>
 </div>
