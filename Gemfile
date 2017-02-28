@@ -86,6 +86,12 @@ gem 'config'
 gem 'whenever'
 gem 'rolify'
 
+gem 'lograge'
+gem 'secure_headers'
+gem 'honeybadger'
+gem 'slowpoke'
+gem 'rack-attack'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
