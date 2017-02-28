@@ -86,7 +86,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.4)
+    concurrent-ruby (1.0.5)
     config (1.4.0)
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
@@ -107,7 +107,7 @@ GEM
     diff-lcs (1.3)
     docile (1.1.5)
     errbase (0.0.3)
-    erubi (1.5.0)
+    erubi (1.6.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -303,7 +303,7 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.4)
+    uglifier (3.1.1)
       execjs (>= 0.3.0, < 3)
     useragent (0.16.8)
     warden (1.2.7)
