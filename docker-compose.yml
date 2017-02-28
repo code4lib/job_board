@@ -1,0 +1,28 @@
+version: '2'
+
+volumes:
+  db:
+
+networks:
+  external:
+  internal:
+
+services:
+  app:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://postgres@db/postgres
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - RAILS_ENV=production
+    ports:
+      - 8080:80
+      - 8443:443
+    networks:
+      internal:
+      external:
+  db:
+    image: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      internal:
