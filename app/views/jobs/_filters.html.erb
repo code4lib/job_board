@@ -1,0 +1,24 @@
+<h2 class="sr-only">Filters</h2>
+<div class="filters">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="jobTypeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filter by type
+    </button>
+    <div class="dropdown-menu" aria-labelledby="jobTypeMenuButton">
+      <% Job.job_types.keys.each do |t| %>
+        <%= link_to t.humanize, jobs_url(search_params.merge(job_type: t)), class: 'dropdown-item' %>
+      <% end %>
+    </div>
+  </div>
+  
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="jobTypeMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter by type
+      </button>
+      <div class="dropdown-menu" aria-labelledby="jobTypeMenuButton">
+        <% Job.job_types.keys.each do |t| %>
+          <%= link_to t.humanize, jobs_url(search_params.merge(job_type: t)), class: 'dropdown-item' %>
+        <% end %>
+      </div>
+    </div>
+</div>

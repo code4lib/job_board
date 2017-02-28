@@ -32,6 +32,8 @@
           <td><%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary publish', remote: true unless job.published? %></td>
           <td><%= link_to 'Edit', edit_job_path(job), class: 'btn btn-secondary' %></td>
           <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% else %>
+          <td colspan="3"></td>
         <% end %>
       </tr>
     <% end %>
