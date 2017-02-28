@@ -75,6 +75,7 @@ gem 'bootstrap_form'
 gem 'rails-html-sanitizer'
 gem 'github-markup', require: 'github/markup'
 gem 'redcarpet'
+gem 'ckeditor'
 
 gem 'kaminari'
 gem 'friendly_id'
