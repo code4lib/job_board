@@ -13,6 +13,13 @@ $(function() {
   });
 
   $(document).on('turbolinks:load', function() {
+    if($('#job_description').length > 0) {
+      if (typeof CKEDITOR != 'undefined') {
+        if (CKEDITOR.instances['job_description']) { CKEDITOR.instances['job_description'].destroy(); }
+        CKEDITOR.replace('job_description');
+      }
+    }
+
     $('.publish[data-remote]').on('ajax:success', function() {
       $(this).closest('tr').remove();
     });

@@ -18,5 +18,5 @@
 //= require bloodhound
 //= require typeahead.jquery.js
 //= require bootstrap-tagsinput
-//= require ckeditor/init
+//= require ckeditor-init
 //= require_tree .
