@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag '/ckeditor/ckeditor', 'data-turbolinks-track': 'reload' %>
     <%= content_for :head %>
+    <%= analytics_init(skip_pageview: true) if GoogleAnalytics.valid_tracker? %>
   </head>
 
   <body>

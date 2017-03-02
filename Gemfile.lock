@@ -122,6 +122,7 @@ GEM
     github-markup (1.4.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    google-analytics-rails (1.1.0)
     hashie (3.5.5)
     honeybadger (3.0.2)
     i18n (0.8.1)
@@ -340,6 +341,7 @@ DEPENDENCIES
   factory_girl_rails
   friendly_id
   github-markup
+  google-analytics-rails
   honeybadger
   jbuilder (~> 2.5)
   jquery-rails

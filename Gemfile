@@ -92,6 +92,8 @@ gem 'honeybadger'
 gem 'slowpoke'
 gem 'rack-attack'
 
+gem 'google-analytics-rails'
+
 group :production do
   gem 'pg'
 end
