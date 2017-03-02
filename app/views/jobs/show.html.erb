@@ -1,5 +1,10 @@
 <article itemscope itemtype="http://schema.org/JobPosting">
   <h1 itemprop="title"><%= @job.title %></h1>
+  <div>
+    <strong class="sr-only">Created:</strong>
+    <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
+  </div>
+
   <div><%= link_to(@job.employer.name, @job.employer, itemprop: 'hiringOrganization') if @job.employer %> - <span itemprop="jobLocation"><%= @job.location %></span></div>
 
   <% if @job.employer %>
@@ -8,8 +13,18 @@
   <hr />
 
   <div class="row">
-    <div class="col-md-8" itemprop="description">
-      <%= render_marked_up_description @job.description, format: @job.description_markup %>
+    <div class="col-md-8">
+      <div itemprop="description">
+        <%= render_marked_up_description @job.description, format: @job.description_markup %>
+      </div>
+
+      <% if @job.created_at != @job.updated_at %>
+        <hr />
+        <small>
+            <strong>Last updated:</strong>
+            <%= l(@job.updated_at) %>
+        </small>
+      <% end %>
     </div>
 
     <div class="col-md-4">
@@ -26,39 +41,31 @@
       <% end %>
     </p>
 
-    <h3>How to apply</h3>
+    <% if @job.url || @job.contact %>
+      <hr />
 
-    <% if @job.url.present? %>
-    <p>
-      <%= link_to @job.url, @job.url, itemprop: 'url' %>
-    </p>
+      <h3>How to apply</h3>
+
+      <% if @job.url.present? %>
+      <p>
+        <%= link_to @job.url, @job.url, itemprop: 'url' %>
+      </p>
+      <% end %>
+
+      <% if @job.contact.present? %>
+      <p>
+        <strong>Contact:</strong>
+        <%= @job.contact %>
+      </p>
+      <% end %>
     <% end %>
-
-    <% if @job.contact.present? %>
-    <p>
-      <strong>Contact:</strong>
-      <%= @job.contact %>
-    </p>
-    <% end %>
-
+<hr />
     <h3 class="h5">Metadata</h3>
 
     <% if @job.user %>
     <p>
       <strong>Submitted by:</strong>
       <%= @job.user&.nickname || @job.user&.email %>
-    </p>
-    <% end %>
-
-    <p>
-      <strong>Created:</strong>
-      <span itemprop="datePosted"><%= l(@job.created_at) %></span>
-    </p>
-
-    <% if @job.created_at != @job.updated_at %>
-    <p>
-      <strong>Updated:</strong>
-      <%= l(@job.updated_at) %>
     </p>
     <% end %>
 
