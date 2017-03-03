@@ -1,5 +1,11 @@
 <article itemscope itemtype="http://schema.org/JobPosting">
   <h1 itemprop="title"><%= @job.title %></h1>
+  <p>
+    <span itemprop="employmentType"><%= render_job_badge(@job) %></span>
+    <% if @job.telecommute? %>
+      <span class="badge badge-info">Remote / Telecommute</span>
+    <% end %>
+  </p>
   <div>
     <strong class="sr-only">Created:</strong>
     <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
@@ -28,22 +34,7 @@
     </div>
 
     <div class="col-md-4">
-      <p>
-        <span itemprop="employmentType"><%= render_job_badge(@job) %></span>
-        <% if @job.telecommute? %>
-          <span class="badge badge-info">Remote / Telecommute</span>
-        <% end %>
-      </p>
-
-    <p itemprop="skills">
-      <% @job.tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
-      <% end %>
-    </p>
-
     <% if @job.url || @job.contact %>
-      <hr />
-
       <h3>How to apply</h3>
 
       <% if @job.url.present? %>
@@ -59,7 +50,16 @@
       </p>
       <% end %>
     <% end %>
-<hr />
+
+    <% if @job.tags.any? %>
+      <hr />
+      <p itemprop="skills">
+        <% @job.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
+        <% end %>
+      </p>
+    <% end %>
+    <hr />
     <h3 class="h5">Metadata</h3>
 
     <% if @job.user %>
