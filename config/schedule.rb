@@ -26,3 +26,7 @@ end
 every 3.hours do
   runner 'FeedParser.harvest!'
 end
+
+every 15.minutes do
+  runner 'EmailParser.harvest!'
+end
