@@ -77,14 +77,17 @@
     <% else %>
     <p>
       <span class="badge badge-danger">Unpublished</span>
-      <% if can? :manage, @job %>
-        <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish', remote: true %>
-      <% end %>
     </p>
     <% end %>
-
+    
+    <% if can? :manage, @job %>
+      <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish', remote: true %>
+    <% end %>
     <% if can? :edit, @job %>
-      <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
+      <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-secondary' %>
+    <% end %>
+    <% if can? :delete, @job %>
+      <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     <% end %>
     </div>
   </div>
