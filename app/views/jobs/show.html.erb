@@ -34,7 +34,7 @@
     </div>
 
     <div class="col-md-4">
-    <% if @job.url || @job.contact %>
+    <% if @job.url.present? || @job.contact.present? %>
       <h3>How to apply</h3>
 
       <% if @job.url.present? %>
@@ -49,17 +49,17 @@
         <%= @job.contact %>
       </p>
       <% end %>
+        <hr />
     <% end %>
 
     <% if @job.tags.any? %>
-      <hr />
       <p itemprop="skills">
         <% @job.tags.each do |tag| %>
           <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
         <% end %>
       </p>
+      <hr />
     <% end %>
-    <hr />
     <h3 class="h5">Metadata</h3>
 
     <% if @job.user %>
