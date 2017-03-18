@@ -13,7 +13,7 @@ class Job < ApplicationRecord
   scope :recent, ->() { published_since(2.months.ago) }
   scope :from_last_week, ->() { published_since(1.week.ago) }
 
-  default_scope { order(published_at: :desc, created_at: :desc) }
+  default_scope { order(created_at: :desc, published_at: :desc) }
   
   validates :title, :description, :job_type, presence: true
 
