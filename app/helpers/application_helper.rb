@@ -15,15 +15,19 @@ module ApplicationHelper
   def render_marked_up_description(content, format:)
     case format
     when '.html'
-      white_list_sanitizer.sanitize(Loofah.fragment(content).tap { |x| x.scrub!(:prune) }.to_s, tags: %w(a div p strong b i em blockquote ul ol li table tr td thead tbody br)).html_safe
+      sanitize_content(content)
     when '.md'
       GitHub::Markup.render(format, content).html_safe
     else
-      auto_link(simple_format(content))
+      sanitize_content(auto_link(simple_format(content, {}, sanitize: false), sanitize: false))
     end
   end
 
   private
+  
+    def sanitize_content(content)
+      white_list_sanitizer.sanitize(Loofah.fragment(content).tap { |x| x.scrub!(:prune) }.to_s, tags: %w(a div p strong b i em blockquote ul ol li table tr td thead tbody br)).html_safe
+    end
 
     def white_list_sanitizer
       Rails::Html::WhiteListSanitizer.new
