@@ -34,7 +34,8 @@
 
   <div class="row">
     <div class="col-md-8">
-      <%= f.text_area :description, rows: 15 %>
+      <%= f.text_area :description, rows: 15, data: { format: f.object.description_markup } %>
+      <%= f.hidden_field :description_markup %>
     </div>
     <div class="col-md-4 pt-4">
       <%= f.text_field :url, label: 'URL for more information' %>

@@ -22,6 +22,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
+    @job.description_markup ||= '.html'
   end
 
   # GET /jobs/1/edit
