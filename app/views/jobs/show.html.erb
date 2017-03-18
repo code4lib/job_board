@@ -11,7 +11,11 @@
     <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
   </div>
 
-  <div><%= link_to(@job.employer.name, @job.employer, itemprop: 'hiringOrganization') if @job.employer %> - <span itemprop="jobLocation"><%= @job.location %></span></div>
+  <div>
+    <%= link_to(@job.employer.name, @job.employer, itemprop: 'hiringOrganization') if @job.employer %>
+    <% '-' if @job.employer.present? && @job.location.present? %> 
+    <span itemprop="jobLocation"><%= @job.location %></span>
+  </div>
 
   <% if @job.employer %>
     <small><%= @job.employer.jobs.recent.where.not(id: @job.id).count %> other recent jobs</small>
