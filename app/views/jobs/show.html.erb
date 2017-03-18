@@ -80,8 +80,8 @@
     </p>
     <% end %>
     
-    <% if can? :manage, @job %>
-      <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish', remote: true %>
+    <% if !@job.published? && can?(:manage, @job) %>
+      <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish' %>
     <% end %>
     <% if can? :edit, @job %>
       <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-secondary' %>
