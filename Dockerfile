@@ -17,6 +17,7 @@ ADD docker/settings/production.yml /home/app/webapp/config/settings/production.y
 
 RUN bundle install --deployment
 RUN SECRET_KEY_BASE=x rake assets:precompile
+RUN SECRET_KEY_BASE=x bundle exec whenever --update-cron
 RUN chown app -R /home/app/webapp/log /home/app/webapp/db
 RUN chmod u+wr -R /home/app/webapp/log /home/app/webapp/db
 
