@@ -104,3 +104,4 @@ end
 
 gem 'gmail'
 gem 'rails_autolink'
+gem 'paranoia', github: 'rubysherpas/paranoia', branch: '2-2-stable'

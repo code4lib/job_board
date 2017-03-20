@@ -44,6 +44,12 @@ describe FeedParser do
       expect { subject.harvest! }.to change(Job, :count).by(0)
     end
     
+    it 'does not duplicate deleted results' do
+      subject.harvest!
+      Job.last.destroy
+      expect { subject.harvest! }.to change(Job, :count).by(0)
+    end
+
     it 'populates job metadata' do
       subject.harvest!
 

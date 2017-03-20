@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228085656) do
+ActiveRecord::Schema.define(version: 20170319153845) do
 
   create_table "employers", force: :cascade do |t|
     t.string "name"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20170228085656) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
     t.index ["employer_id"], name: "index_jobs_on_employer_id"
     t.index ["published_at"], name: "index_jobs_on_published_at"
     t.index ["source_id"], name: "index_jobs_on_source_id"

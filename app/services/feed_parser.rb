@@ -15,7 +15,7 @@ class FeedParser
   
   def harvest!
     items.each do |item|
-      Job.find_or_initialize_by(source_id: item.guid&.content || item.link) do |job|
+      Job.with_deleted.find_or_initialize_by(source_id: item.guid&.content || item.link) do |job|
         job.assign_attributes(
           title: item.title,
           description: item.description,

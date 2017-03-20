@@ -34,7 +34,7 @@ class EmailParser
   end
   
   def adapt_to_job
-    Job.find_or_initialize_by(source_id: message_id, origin: 'email') do |job|
+    Job.with_deleted.find_or_initialize_by(source_id: message_id, origin: 'email') do |job|
       job.title = sanitized_subject
       job.description = description
       job.description_markup = description_markup
