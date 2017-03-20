@@ -3,7 +3,7 @@ class ModerateController < ApplicationController
 
   def index
     authorize! :moderate, Job
-    @jobs = @jobs.unscoped.accessible_by(current_ability).unpublished.order(created_at: :asc)
+    @jobs = @jobs.unscoped.without_deleted.accessible_by(current_ability).unpublished.order(created_at: :asc)
     @jobs = @jobs.page(params[:page]).per(100)
   end
 
