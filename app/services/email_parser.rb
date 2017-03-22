@@ -76,6 +76,6 @@ class EmailParser
     return false unless subject.present?
     return false if subject =~ /^re:/i
 
-    subject =~ /(job|position|employment)/i
+    subject =~ /(job|position|employment/vacancy)/i
   end
 end
