@@ -63,7 +63,7 @@ class EmailParser
   end
   
   def sanitized_subject
-    subject.sub('[CODE4LIB]', '').sub(/[\n\r]/, '').sub(/\s+/, ' ').sub(/^(job|position|employment):\s*/i, '')
+    subject.sub('[CODE4LIB]', '').sub(/[\n\r]/, '').sub(/\s+/, ' ').sub(/^(job|position|employment|vacancy):\s*/i, '')
   end
   
   def valid?
@@ -76,6 +76,6 @@ class EmailParser
     return false unless subject.present?
     return false if subject =~ /^re:/i
 
-    subject =~ /(job|position|employment/vacancy)/i
+    subject =~ /(job|position|employment|vacancy)/i
   end
 end
