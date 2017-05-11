@@ -1,3 +1,4 @@
-<%= strip_tags(render_marked_up_description @job.description, format: @job.description_markup) %>
+<%= strip_tags(render_marked_up_description(@job.description, format: @job.description_markup).gsub(/<br\s*\/?>/,"\n").gsub(/<\/?p\s*\/?>/,"\n")) %>
 
+----
 Brought to you by code4lib jobs: <%= job_url(@job) %>
