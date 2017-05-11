@@ -90,4 +90,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   GA.tracker = Settings.analytics.tracking_id
+
+  config.action_mailer.default_options = Settings.action_mailer.default_options.to_hash
+  config.action_mailer.default_url_options = Settings.action_mailer.default_url_options.to_hash
+  config.action_mailer.smtp_settings = Settings.action_mailer.smtp_settings.to_hash
 end

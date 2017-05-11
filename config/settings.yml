@@ -4,6 +4,11 @@ oauth:
     app_id:
     app_secret:
 
+action_mailer:
+  default_options: {}
+  default_url_options: {}
+  smtp_settings: {}
+
 mailers:
   single:
     to:
