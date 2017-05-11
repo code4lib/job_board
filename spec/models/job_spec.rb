@@ -29,11 +29,36 @@ RSpec.describe Job, type: :model do
   end
 
   describe '#publish!' do
+    before do
+      subject.update_attributes(title: 'x', description: 'y', job_type: :full_time)
+    end
     it 'marks the job as published' do
       subject.publish!
       
       expect(subject).to be_published
       expect(subject.published_at).to be > 1.minute.ago
+    end
+
+    it 'sends email notifications' do
+      allow(subject).to receive(:send_job_email)
+
+      subject.publish!
+
+      expect(subject).to have_received(:send_job_email)
+    end
+
+    context 'a harvested job' do
+      before do
+        subject.origin = 'email'
+      end
+
+      it 'does not send email notifications' do
+        allow(subject).to receive(:send_job_email)
+
+        subject.publish!
+
+        expect(subject).to have_received(:send_job_email)
+      end
     end
   end
 end

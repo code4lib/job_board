@@ -19,7 +19,6 @@ class Job < ApplicationRecord
   validates :title, :description, :job_type, presence: true
 
   acts_as_taggable
-
   after_save :send_job_email, if: :just_published?
 
   def display_title
@@ -43,7 +42,7 @@ class Job < ApplicationRecord
   end
 
   def send_job_email
-    JobMailer.single(self).deliver_later
+    JobMailer.single(self).deliver_later if origin.nil?
   end
 
   def just_published?
