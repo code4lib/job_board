@@ -5,5 +5,5 @@ notifications:
   email: false
 
 rvm:
-  - 2.4.0
+  - 2.4.1
 
