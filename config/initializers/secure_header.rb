@@ -7,11 +7,13 @@ SecureHeaders::Configuration.default do |config|
     }
   }
   
+  # thanks CKEditor...
+  config.csp[:script_src] +=  ['\'unsafe-eval\' \'unsafe-inline\'']
+  
   unless Rails.env.production?
     config.csp[:default_src] += ['http:']
     config.csp[:img_src] += ['http:']
-    # thanks CKEditor...
-    config.csp[:script_src] += ['http: \'unsafe-eval\' \'unsafe-inline\'']
+    config.csp[:script_src] += ['http:']
     config.csp[:style_src] += ['http:']
   end
 
