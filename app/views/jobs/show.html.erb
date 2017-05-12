@@ -25,6 +25,7 @@
   <div class="row">
     <div class="col-md-8">
       <div itemprop="description">
+        <h2 class="sr-only">Description</h2>
         <%= render_marked_up_description @job.description, format: @job.description_markup %>
       </div>
 
@@ -39,7 +40,7 @@
 
     <div class="col-md-4">
     <% if @job.url.present? || @job.contact.present? %>
-      <h3>How to apply</h3>
+      <h2 class="h3">How to apply</h2>
 
       <% if @job.url.present? %>
       <p>
@@ -64,7 +65,7 @@
       </p>
       <hr />
     <% end %>
-    <h3 class="h5">Metadata</h3>
+    <h2 class="h5">Metadata</h2>
 
     <% if @job.user %>
     <p>
