@@ -1,5 +1,6 @@
 <% content_for(:head) do %>
   <%= auto_discovery_link_tag :atom, format: :atom %>
+  <%= auto_discovery_link_tag(:json, jobs_url(format: 'json'), type: 'application/json') %>
 <% end %>
 
 <%= link_to 'Post new job', new_job_path, class: 'btn btn-primary float-right' if can? :create, Job %>

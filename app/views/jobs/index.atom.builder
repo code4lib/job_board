@@ -27,7 +27,7 @@ xml.feed("xmlns" => "http://www.w3.org/2005/Atom") do
 
   xml.updated @jobs.first.published_at.iso8601
   
-  @jobs.each do |job|
+  @jobs.published.each do |job|
     xml.entry do
       xml.title job.title
       xml.updated job.published_at.iso8601

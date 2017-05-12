@@ -12,12 +12,14 @@ json.relationships do
     end
   end
 
-  json.employer do
-    json.links do
-      json.self employer_url(job.employer)
-    end
-    json.data do
-      json.extract! job.employer, :id, :name
+  if job.employer
+    json.employer do
+      json.links do
+        json.self employer_url(job.employer)
+      end
+      json.data do
+        json.extract! job.employer, :id, :name
+      end
     end
   end
 end
