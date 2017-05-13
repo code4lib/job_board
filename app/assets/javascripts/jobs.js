@@ -36,6 +36,7 @@ $(function() {
       display: 'name',
       source: employers.ttAdapter()
     });
+    $('#job_employer_name').attr('autocomplete', 'off');
     $('#job_employer_name').closest('.twitter-typeahead').css('display', 'inline');
   });
 
