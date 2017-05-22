@@ -63,7 +63,7 @@ class EmailParser
   end
   
   def sanitized_subject
-    subject.sub('[CODE4LIB]', '').sub(/[\n\r]/, '').sub(/\s+/, ' ').sub(/^(job|position|employment|vacancy):\s*/i, '')
+    subject.sub('[CODE4LIB]', '').gsub(/[\n\r]/, '').gsub(/\s+/, ' ').sub(/^\s*(job|position|employment|vacancy)\s*:\s*/i, '').strip
   end
   
   def valid?
