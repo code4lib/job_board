@@ -105,3 +105,5 @@ end
 gem 'gmail'
 gem 'rails_autolink'
 gem 'paranoia'
+
+gem 'faraday'

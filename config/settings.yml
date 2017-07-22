@@ -15,5 +15,8 @@ mailers:
   digest:
     to:
 
+slack:
+  webhook_url:
+
 feeds:
   - http://digital-scholarship.org/digitalkoans/category/digital-library-jobs/feed/

@@ -20,6 +20,7 @@ class Job < ApplicationRecord
 
   acts_as_taggable
   after_save :send_job_email, if: :just_published?
+  after_save :send_slack_notification, if: :just_published?
 
   def display_title
     if employer
@@ -43,6 +44,10 @@ class Job < ApplicationRecord
 
   def send_job_email
     JobMailer.single(self).deliver_later if origin =~ /jobs\.code4lib\.org/
+  end
+
+  def send_slack_notification
+    SlackNotificationJob.perform_later(self)
   end
 
   def just_published?

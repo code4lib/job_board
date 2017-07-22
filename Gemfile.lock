@@ -343,6 +343,7 @@ DEPENDENCIES
   coveralls
   devise
   factory_girl_rails
+  faraday
   friendly_id
   github-markup
   gmail
