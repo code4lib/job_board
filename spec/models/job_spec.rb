@@ -30,7 +30,7 @@ RSpec.describe Job, type: :model do
 
   describe '#publish!' do
     before do
-      subject.update_attributes(title: 'x', description: 'y', job_type: :full_time)
+      subject.update_attributes(title: 'x', description: 'y', job_type: :full_time, origin: 'jobs.code4lib.org')
     end
     it 'marks the job as published' do
       subject.publish!
@@ -40,11 +40,11 @@ RSpec.describe Job, type: :model do
     end
 
     it 'sends email notifications' do
-      allow(subject).to receive(:send_job_email)
+      expect { subject.publish! }.to have_enqueued_job.on_queue('mailers')
+    end
 
-      subject.publish!
-
-      expect(subject).to have_received(:send_job_email)
+    it 'sends slack notifications' do
+      expect { subject.publish! }.to have_enqueued_job(SlackNotificationJob)
     end
 
     context 'a harvested job' do
@@ -53,11 +53,7 @@ RSpec.describe Job, type: :model do
       end
 
       it 'does not send email notifications' do
-        allow(subject).to receive(:send_job_email)
-
-        subject.publish!
-
-        expect(subject).to have_received(:send_job_email)
+        expect { subject.publish! }.not_to have_enqueued_job.on_queue('mailers')
       end
     end
   end
