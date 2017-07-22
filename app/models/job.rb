@@ -42,7 +42,7 @@ class Job < ApplicationRecord
   end
 
   def send_job_email
-    JobMailer.single(self).deliver_later if origin.nil?
+    JobMailer.single(self).deliver_later if origin =~ /jobs\.code4lib\.org/
   end
 
   def just_published?
