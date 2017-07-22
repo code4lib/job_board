@@ -186,6 +186,8 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    page_title_helper (2.1.0)
+      rails (>= 3.0.0)
     paper_trail (7.1.0)
       activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
@@ -359,6 +361,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-oauth2
   omniauth-twitter
+  page_title_helper
   paper_trail
   paranoia
   pg

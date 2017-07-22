@@ -107,3 +107,4 @@ gem 'rails_autolink'
 gem 'paranoia'
 
 gem 'faraday'
+gem 'page_title_helper'

@@ -38,3 +38,25 @@ en:
     pm: p
     formats:
       default: '%A, %B %-d, %Y %H:%M %Z'
+
+  app:
+    name: 'Code4Lib Job Board'
+
+  employers:
+    index:
+      title: 'Employers'
+
+  home:
+    index:
+      title: 'Home'
+
+    login:
+      title: 'Login'
+      
+  jobs:
+    index:
+      title: 'Jobs'
+      
+  tags:
+    index:
+      title: 'Tags'
