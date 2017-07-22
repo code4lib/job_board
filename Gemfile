@@ -59,7 +59,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
@@ -78,7 +78,7 @@ gem 'redcarpet'
 
 gem 'kaminari'
 gem 'friendly_id'
-gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
+gem 'acts-as-taggable-on'
 gem 'paper_trail'
 
 gem 'config'
