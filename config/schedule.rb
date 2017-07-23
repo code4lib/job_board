@@ -30,3 +30,7 @@ end
 every 15.minutes do
   runner 'EmailParser.harvest!'
 end
+
+every 60.minutes do
+  rake '-s sitemap:refresh' 
+end

@@ -108,3 +108,4 @@ gem 'paranoia'
 
 gem 'faraday'
 gem 'page_title_helper'
+gem 'sitemap_generator'
