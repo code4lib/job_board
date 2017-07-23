@@ -22,6 +22,14 @@ class Job < ApplicationRecord
   after_save :send_job_email, if: :just_published?
   after_save :send_slack_notification, if: :just_published?
 
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+  def slug
+    title.to_s.parameterize
+  end
+
   def display_title
     if employer
       "#{title} at #{employer.name}"
