@@ -31,6 +31,7 @@
       <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
         <% locality, region = @job.location.split(',', 2) %>
         <span itemprop="addressLocality"><%= locality %></span>
+        <% if locality.present? && region.present? %>, <% end %>
         <span itemprop="addressRegion"><%= region %></span>
       </span>
     </span>
