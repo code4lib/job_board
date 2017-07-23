@@ -18,10 +18,16 @@
     <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
   </div>
 
-  <div>
-    <%= link_to(@job.employer.name, @job.employer, itemprop: 'hiringOrganization') if @job.employer %>
+  <div itemprop="hiringOrganization" itemscope itemtype="http://schema.org/Organization">
+    <% if @job.employer %>
+      <%= link_to(@job.employer, itemprop: 'url') do %>
+        <%= content_tag :span, @job.employer.name, itemprop: 'name' %>
+      <% end %>
+    <% end %>
     <% '-' if @job.employer.present? && @job.location.present? %> 
-    <span itemprop="jobLocation"><%= @job.location %></span>
+    <span itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
+      <span itemprop="address"><%= @job.location %></span>
+    </span>
   </div>
 
   <% if @job.employer %>
