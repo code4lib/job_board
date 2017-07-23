@@ -1,4 +1,10 @@
 <%- page_title!(@job.display_title) %>
+<% content_for(:head) do %>
+  <% if @job.expired? %>
+    <meta name="robots" content="noindex">
+  <% end %>
+<% end %>
+
 <article itemscope itemtype="http://schema.org/JobPosting">
   <h1 itemprop="title"><%= @job.title %></h1>
   <p>

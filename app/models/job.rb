@@ -53,4 +53,8 @@ class Job < ApplicationRecord
   def just_published?
     !attribute_before_last_save('published') && published?
   end
+
+  def expired?
+    created_at < Time.zone.now - 2.months
+  end
 end
