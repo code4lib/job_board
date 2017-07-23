@@ -28,7 +28,11 @@
     <% end %>
     <% '-' if @job.employer.present? && @job.location.present? %> 
     <span itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
-      <span itemprop="address"><%= @job.location %></span>
+      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <% locality, region = @job.location.split(',', 2) %>
+        <span itemprop="addressLocality"><%= locality %></span>
+        <span itemprop="addressRegion"><%= region %></span>
+      </span>
     </span>
   </div>
 
