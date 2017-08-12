@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def moderation_text_with_badge
-    safe_join ['Moderation', ' ', content_tag(:span, Job.unpublished.count, class: 'badge badge-default job-unpublished-count')]
+    safe_join ['Moderation', ' ', content_tag(:span, Job.unpublished.count, class: 'badge badge-secondary job-unpublished-count')]
   end
 
   def render_marked_up_description(content, format:)

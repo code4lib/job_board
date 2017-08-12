@@ -12,7 +12,7 @@
   </p>
 <% end %>
 
-<h2>Jobs <span class="badge badge-default"><%= @employer.jobs.count %></span></h2>
+<h2>Jobs <span class="badge badge-secondary"><%= @employer.jobs.count %></span></h2>
 <%= render 'jobs/table', jobs: @employer.jobs.page(params[:page]) %>
 
 <%= link_to 'Edit', edit_employer_path(@employer), class: 'btn btn-primary' if can? :edit, @employer %>
