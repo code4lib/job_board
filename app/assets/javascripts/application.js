@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require popper
 //= require tether
 //= require bootstrap
 //= require bloodhound

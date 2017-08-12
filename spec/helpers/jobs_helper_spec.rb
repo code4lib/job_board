@@ -36,7 +36,7 @@ RSpec.describe JobsHelper, type: :helper do
 
     it 'renders an uncategorized badge' do
       job.job_type = :uncategorized
-      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-default'
+      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-secondary'
     end
   end
 end

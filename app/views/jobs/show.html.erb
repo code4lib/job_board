@@ -81,7 +81,7 @@
     <% if @job.tags.any? %>
       <p itemprop="skills">
         <% @job.tags.each do |tag| %>
-          <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
+          <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
         <% end %>
       </p>
       <hr />

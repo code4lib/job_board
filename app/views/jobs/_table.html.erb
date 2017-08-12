@@ -23,7 +23,7 @@
           <div class="small"><%= job.location%></div>
           <div>
             <% job.tags.each do |tag| %>
-              <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-default' %>
+              <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
             <% end %>
           </div>
         </td>

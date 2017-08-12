@@ -371,6 +371,7 @@ DEPENDENCIES
   paper_trail
   paranoia
   pg
+  popper_js
   puma (~> 3.7)
   rack-attack
   rails (~> 5.1.0)
