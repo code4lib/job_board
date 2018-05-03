@@ -2,7 +2,7 @@ require 'rss'
 
 class FeedParser
   attr_reader :url
-  
+
   def self.harvest!
     Settings.feeds.each do |feed|
       new(feed).harvest!
@@ -12,7 +12,7 @@ class FeedParser
   def initialize(url)
     @url = url
   end
-  
+
   def harvest!
     items.each do |item|
       Job.with_deleted.find_or_initialize_by(source_id: item.guid&.content || item.link) do |job|
@@ -27,19 +27,19 @@ class FeedParser
         )
         job.save
       end
-    end 
+    end
   end
-  
+
   private
-  
+
   def items
     feed.items
   end
-  
+
   def feed
     @feed ||= RSS::Parser.parse(response)
   end
-  
+
   def response
     Faraday.get(url).body
   end

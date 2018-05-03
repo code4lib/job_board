@@ -11,7 +11,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe JobsHelper, type: :helper do
-  let(:job) { FactoryGirl.create(:job) }
+  let(:job) { FactoryBot.create(:job) }
 
   describe '#render_job_badge' do
     it 'renders a full time badge' do

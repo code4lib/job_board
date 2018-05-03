@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ModerateController do
-  let(:user) { FactoryGirl.build(:admin) }
+  let(:user) { FactoryBot.build(:admin) }
   before do
     allow(controller).to receive(:current_user).and_return(user)
   end
@@ -12,11 +12,11 @@ describe ModerateController do
   let(:valid_session) { {} }
 
   let!(:job) do
-    FactoryGirl.create(:job, tag_list: 'x', published: true)
+    FactoryBot.create(:job, tag_list: 'x', published: true)
   end
   
   let!(:unpublished_job) do
-    FactoryGirl.create(:job, tag_list: 'x', published: false)
+    FactoryBot.create(:job, tag_list: 'x', published: false)
   end
 
   describe '#index' do

@@ -8,8 +8,8 @@ describe TagsController do
 
   describe '#index' do
     before do
-      FactoryGirl.create(:job, tag_list: 'a, b, c', published: true)
-      FactoryGirl.create(:job, tag_list: 'not_published', published: false)
+      FactoryBot.create(:job, tag_list: 'a, b, c', published: true)
+      FactoryBot.create(:job, tag_list: 'not_published', published: false)
     end
 
     it 'assigns all published tags as @tags' do
@@ -21,11 +21,11 @@ describe TagsController do
 
   describe '#show' do
     let!(:job) do
-      FactoryGirl.create(:job, tag_list: 'x', published: true)
+      FactoryBot.create(:job, tag_list: 'x', published: true)
     end
     
     let!(:unpublished_job) do
-      FactoryGirl.create(:job, tag_list: 'x', published: false)
+      FactoryBot.create(:job, tag_list: 'x', published: false)
     end
 
     it 'assigns the tag as @tag' do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Users::OmniauthCallbacksController do
-  let(:mock_user) { FactoryGirl.create(:user) }
+  let(:mock_user) { FactoryBot.create(:user) }
 
   before do
     @request.env['devise.mapping'] = Devise.mappings[:user]

@@ -13,4 +13,8 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def autopublish?
+    has_role?(:admin) || provider.present?
+  end
 end

@@ -2,8 +2,8 @@ class Job < ApplicationRecord
   acts_as_paranoid
   has_paper_trail ignore: [:published, :published_at]
 
-  belongs_to :user
-  belongs_to :employer
+  belongs_to :user, required: false
+  belongs_to :employer, required: false
 
   enum job_type: [:full_time, :part_time, :temporary, :contract, :internship, :rfp, :contest, :uncategorized]
 
@@ -15,7 +15,7 @@ class Job < ApplicationRecord
   scope :from_last_week, ->() { published_since(1.week.ago) }
 
   default_scope { order(created_at: :desc, published_at: :desc) }
-  
+
   validates :title, :description, :job_type, presence: true
 
   acts_as_taggable
@@ -41,7 +41,7 @@ class Job < ApplicationRecord
   def employer_name
     employer&.name
   end
-  
+
   def employer_name=(value)
     self.employer = Employer.find_or_create_by(name: value)
   end
