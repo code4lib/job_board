@@ -19,7 +19,7 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe JobsController, type: :controller do
-  let(:user) { FactoryGirl.build(:admin) }
+  let(:user) { FactoryBot.build(:admin) }
   before do
     allow(controller).to receive(:current_user).and_return(user)
   end

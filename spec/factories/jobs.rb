@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :job do
     sequence(:title) { |n| "job #{n}" }
     job_type :uncategorized
