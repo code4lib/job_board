@@ -77,7 +77,7 @@ class JobsController < ApplicationController
     def create_params
       job_params.merge(
         user: current_user,
-        published: current_user.present?,
+        published: current_user.present? && current_user.autopublish?,
         published_at: Time.now,
         origin: request.original_url
       )
