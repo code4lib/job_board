@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Fodoj/acts-as-taggable-on.git
-  revision: 3160a13506bcb93fde95c9b77424c32afbcb6385
+  revision: eee01af2fa01563f353627fa2e775cdab8026164
   branch: rails-5.2
   specs:
     acts-as-taggable-on (5.0.0)
@@ -55,9 +55,9 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.4.1)
+    autoprefixer-rails (8.5.1)
       execjs
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
@@ -69,7 +69,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.0.3)
+    capybara (3.1.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -100,13 +100,13 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    docile (1.3.0)
+    docile (1.3.1)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.4.5)
+    dry-core (0.4.6)
       concurrent-ruby (~> 1.0)
     dry-equalizer (0.2.1)
     dry-logic (0.4.2)
@@ -130,10 +130,10 @@ GEM
       dry-types (~> 0.12.0)
     erubi (1.7.1)
     execjs (2.7.0)
-    factory_bot (4.8.2)
+    factory_bot (4.10.0)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.8.2)
-      factory_bot (~> 4.8.2)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -230,7 +230,7 @@ GEM
     orm_adapter (0.5.0)
     page_title_helper (3.0.0)
       rails (>= 4.2.0, < 6.0)
-    paper_trail (9.0.1)
+    paper_trail (9.1.0)
       activerecord (>= 4.2, < 5.3)
       request_store (~> 1.1)
     paranoia (2.4.1)
@@ -317,9 +317,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    secure_headers (5.0.5)
-      useragent (>= 0.15.0)
-    selenium-webdriver (3.11.0)
+    secure_headers (6.0.0)
+    selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     simplecov (0.16.1)
@@ -329,9 +328,10 @@ GEM
     simplecov-html (0.10.2)
     sitemap_generator (6.0.1)
       builder (~> 3.0)
-    slowpoke (0.2.0)
-      rack-timeout (>= 0.3.0)
-      rails
+    slowpoke (0.2.1)
+      actionpack
+      rack-timeout (>= 0.3.0, < 0.5.0)
+      railties
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -355,7 +355,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
-    useragent (0.16.10)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.6.2)
