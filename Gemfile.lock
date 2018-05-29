@@ -154,6 +154,8 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
+    invisible_captcha (0.10.0)
+      rails (>= 3.2.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -391,6 +393,7 @@ DEPENDENCIES
   gmail
   google-analytics-rails
   honeybadger
+  invisible_captcha
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

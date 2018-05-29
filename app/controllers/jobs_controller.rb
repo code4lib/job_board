@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => :show
+  invisible_captcha only: [:create]
 
   # GET /jobs
   # GET /jobs.json
