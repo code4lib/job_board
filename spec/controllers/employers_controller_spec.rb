@@ -40,10 +40,17 @@ RSpec.describe EmployersController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all employers as @employers" do
+    it "assigns all employers with published jobs as @employers" do
       employer = Employer.create! valid_attributes
+      employer.jobs.create!(title: 'x', description: 'x', job_type: :full_time, published: true)
       get :index, params: {}, session: valid_session
       expect(assigns(:employers)).to eq([employer])
+    end
+
+    it "hides employers without published jobs" do
+      employer = Employer.create! valid_attributes
+      get :index, params: {}, session: valid_session
+      expect(assigns(:employers)).not_to include(employer)
     end
   end
 
