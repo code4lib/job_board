@@ -1,8 +1,4 @@
-oauth:
-  code4lib:
-    client_options: {}
-    app_id:
-    app_secret:
+oauth: {}
 
 action_mailer:
   default_options: {}
