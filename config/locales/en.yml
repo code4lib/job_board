@@ -42,6 +42,11 @@ en:
   app:
     name: 'Code4Lib Job Board'
 
+  devise:
+    sessions:
+      new:
+        title: 'Login'
+
   employers:
     index:
       title: 'Employers'
@@ -52,11 +57,15 @@ en:
 
     login:
       title: 'Login'
-      
+
   jobs:
     index:
       title: 'Jobs'
-      
+
+  moderate:
+    index:
+      title: 'Moderate'
+
   tags:
     index:
       title: 'Tags'
