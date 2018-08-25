@@ -28,7 +28,10 @@
           </div>
         </td>
         <% if can? :manage, job %>
-          <td><%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary publish', remote: true unless job.published? %></td>
+          <td>
+            <%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary publish', remote: true unless job.published? %>
+            <%= link_to 'Delete', job, action: :delete, class: 'btn btn-danger', remote: true unless job.published? %>
+          </td>
         <% else %>
           <td></td>
         <% end %>
