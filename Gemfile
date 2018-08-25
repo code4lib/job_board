@@ -79,7 +79,7 @@ gem 'redcarpet'
 
 gem 'kaminari'
 gem 'friendly_id'
-gem 'acts-as-taggable-on', github: 'Fodoj/acts-as-taggable-on', branch: 'rails-5.2'
+gem 'acts-as-taggable-on'
 gem 'paper_trail'
 
 gem 'config'
