@@ -1,7 +1,6 @@
 class JobsController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => :show
-  invisible_captcha only: [:create]
 
   # GET /jobs
   # GET /jobs.json
@@ -34,7 +33,7 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     respond_to do |format|
-      if @job.save
+      if verify_recaptcha(model: @job) && @job.save
         format.html { redirect_to @job, notice: 'Thanks for your submission; a moderator will approve and publish your question soon.' }
         format.json { render :show, status: :created, location: @job }
       else

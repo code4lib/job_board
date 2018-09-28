@@ -146,8 +146,6 @@ GEM
     honeybadger (4.0.0)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
-    invisible_captcha (0.10.0)
-      rails (>= 3.2.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -276,6 +274,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    recaptcha (4.12.0)
+      json
     redcarpet (3.4.0)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -389,7 +389,6 @@ DEPENDENCIES
   gmail
   google-analytics-rails
   honeybadger
-  invisible_captcha
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
@@ -412,6 +411,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-html-sanitizer
   rails_autolink
+  recaptcha
   redcarpet
   rolify
   rspec-rails
