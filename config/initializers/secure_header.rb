@@ -2,7 +2,7 @@ SecureHeaders::Configuration.default do |config|
   config.cookies[:secure] = SecureHeaders::OPT_OUT unless Rails.env.production?
 
   # thanks CKEditor...
-  config.csp[:script_src] +=  ['\'unsafe-eval\' \'unsafe-inline\'']
+  config.csp[:script_src] +=  ['\'unsafe-inline\'']
 
   unless Rails.env.production?
     config.csp[:default_src] += ['http:']
