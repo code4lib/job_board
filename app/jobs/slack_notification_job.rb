@@ -23,7 +23,7 @@ class SlackNotificationJob < ApplicationJob
           title: job.title,
           title_link: Rails.application.routes.url_helpers.job_url(id: job.id, host: Rails.application.config.action_mailer.default_url_options[:host]),
           color: "#36a64f",
-          text: job.description
+          text: ActionView::Base.full_sanitizer.sanitize(job.description)
         }
       ]
     }
