@@ -27,6 +27,7 @@ describe FeedParser do
   		<description><![CDATA[Queen&#39;s University is recruiting a Head, Open Scholarship Services. Here&#39;s an excerpt from the ad: Reporting to an Associate University Librarian and working with colleagues across the library and the university, the Head leads the division in developing a culture and services that encourage the sharing, as openly as possible, and preservation of Queen&#8217;s scholarly [&#8230;]]]></description>
 		</item>
   </channel>
+  </rss>
   EOF
   end
 
@@ -38,12 +39,12 @@ describe FeedParser do
     it 'creates new jobs from the rss feed' do
       expect { subject.harvest! }.to change(Job, :count).by(1)
     end
-    
+
     it 'does not duplicate results' do
       subject.harvest!
       expect { subject.harvest! }.to change(Job, :count).by(0)
     end
-    
+
     it 'does not duplicate deleted results' do
       subject.harvest!
       Job.last.destroy
