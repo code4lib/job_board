@@ -2,7 +2,7 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's 
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
@@ -14,22 +14,49 @@
  *= require bootstrap-tagsinput
  *= require_self
  */
- 
+
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
 
-body {
-  margin-top: 5rem;
-}
 
 .bootstrap-tagsinput {
   @extend .form-control;
-  
+
   .label {
     @extend .badge;
   }
-  
+
   .label-info {
     @extend .badge-info;
+  }
+}
+
+.job-header {
+  background-color: lighten(#2373db, 45);
+}
+
+.card-rows {
+  .card {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+  }
+
+  .card-footer,
+  .card-header,
+  .card-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .card-header {
+    background-color: inherit;
+    border-bottom: 0;
+  }
+
+  .card-footer {
+    background-color: inherit;
+    border-top: 0;
   }
 }

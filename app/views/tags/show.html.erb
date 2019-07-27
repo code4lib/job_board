@@ -1,3 +1,5 @@
-<h1><%= page_title!("#{@tag} jobs") %></h1>
+<div class="container">
+  <h1><%= page_title!("#{@tag} jobs") %></h1>
 
-<%= render 'jobs/table', jobs: @jobs %>
+  <%= render 'jobs/table', jobs: @jobs %>
+</div>

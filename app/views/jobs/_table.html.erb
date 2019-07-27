@@ -1,43 +1,40 @@
 <% show_pagination = true if show_pagination.nil? %>
 <%= page_entries_info jobs if show_pagination %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Posted</th>
-      <th>Title</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% jobs.each do |job| %>
-      <tr>
-        <td>
-          <div><%= l job.created_at.to_date %></div>
-          <%= render_job_badge(job) %>
-        </td>
-        <td>
-          <%= link_to job.title, job %>
-          <div><%= link_to job.employer.name, job.employer if job.employer %></div>
-          <div class="small"><%= job.location%></div>
-          <div>
+<ul class="list-unstyled mt-3 card-rows">
+  <% jobs.each do |job| %>
+    <li class="card job">
+      <% if can?(:manage, job) %>
+        <div class="card-header">
+          <div class="float-right">
+            <%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary btn-sm publish', remote: true unless job.published? %>
+            <%= link_to 'Delete', job, method: :delete, class: 'btn btn-danger btn-sm delete', remote: true unless job.published? %>
+          </div>
+        </div>
+      <% end %>
+      <div class="card-body position-relative">
+        <div class="float-right text-right">
+          <div><%= render_job_badge(job) %></div>
+          <% if job.telecommute? %>
+            <span class="badge badge-info">Remote / Telecommute</span>
+          <% end %>
+          <div class="small"><%= l job.created_at.to_date %></div>
+        </div>
+        <h5 class="card-title w-75"><%= link_to job.title, job, class: 'stretched-link' %></h5>
+        <div class="card-subtitle w-75"><%= safe_join([job.employer.name, job.location].reject(&:blank?), ' — ') %></div>
+        <p class="card-text text-muted mt-2 mb-0 w-75"><%= strip_tags(job.description).truncate(250) %></p>
+      </div>
+      <% if job.tags.any? %>
+        <div class="card-footer text-muted small">
+          <div class="float-left">
             <% job.tags.each do |tag| %>
               <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
             <% end %>
           </div>
-        </td>
-        <% if can? :manage, job %>
-          <td>
-            <%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary publish', remote: true unless job.published? %>
-            <%= link_to 'Delete', job, method: :delete, class: 'btn btn-danger', remote: true unless job.published? %>
-          </td>
-        <% else %>
-          <td></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
 <%= paginate jobs, theme: 'twitter-bootstrap-4' if show_pagination %>

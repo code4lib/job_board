@@ -32,8 +32,8 @@ RSpec.describe "jobs/index", type: :view do
 
   it "renders a list of jobs" do
     render
-    assert_select "tr>td>.badge", :text => "Full time".to_s, :count => 2
-    assert_select "tr>td>a", :text => "Title".to_s, :count => 2
-    assert_select "tr>td>.small", :text => "MyLocation".to_s, :count => 2
+    assert_select ".badge", :text => "Full time".to_s, :count => 2
+    assert_select "a", :text => "Title".to_s, :count => 2
+    assert_select ".card-subtitle", :text => "foo — MyLocation".to_s, :count => 2
   end
 end

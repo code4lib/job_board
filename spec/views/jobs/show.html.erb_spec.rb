@@ -84,9 +84,9 @@ RSpec.describe "jobs/show", type: :view do
     it 'contains metadata about when the job was published' do
       render
       expect(rendered).to have_content 'Metadata'
-      expect(rendered).to have_content "Created:\n    " + view.l(@job.created_at.to_date)
-      expect(rendered).to have_content "Last updated:\n            " + view.l(@job.updated_at)
-      expect(rendered).to have_content "Published:\n      " + view.l(@job.published_at)
+      expect(rendered).to have_content "Created:\n          " + view.l(@job.created_at.to_date)
+      expect(rendered).to have_content "Last updated:\n          " + view.l(@job.updated_at)
+      expect(rendered).to have_content "Published:\n            " + view.l(@job.published_at)
       expect(rendered).not_to have_selector '.badge', text: 'Unpublished'
     end
   end

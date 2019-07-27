@@ -1,18 +1,22 @@
+<div class="job-header py-3 mb-3">
+  <div class="container">
+    <h1><%= page_title!(@employer.name) %></h1>
 
-<h1><%= page_title!(@employer.name) %></h1>
+    <p>
+      <%= @employer.description %>
+    </p>
 
-<p>
-  <%= @employer.description %>
-</p>
+    <% if @employer.address %>
+      <p>
+        <strong>Address:</strong>
+        <%= @employer.address %>
+      </p>
+    <% end %>
+  </div>
+</div>
+<div class="container">
+  <h2>Jobs <span class="badge badge-secondary"><%= @employer.jobs.count %></span></h2>
+  <%= render 'jobs/table', jobs: @employer.jobs.page(params[:page]) %>
 
-<% if @employer.address %>
-  <p>
-    <strong>Address:</strong>
-    <%= @employer.address %>
-  </p>
-<% end %>
-
-<h2>Jobs <span class="badge badge-secondary"><%= @employer.jobs.count %></span></h2>
-<%= render 'jobs/table', jobs: @employer.jobs.page(params[:page]) %>
-
-<%= link_to 'Edit', edit_employer_path(@employer), class: 'btn btn-primary' if can? :edit, @employer %>
+  <%= link_to 'Edit', edit_employer_path(@employer), class: 'btn btn-primary' if can? :edit, @employer %>
+</div>

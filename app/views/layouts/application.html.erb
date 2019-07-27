@@ -12,36 +12,38 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <%= link_to 'code4lib jobs', root_url, class: 'navbar-brand' %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <%= link_to 'code4lib jobs', root_url, class: 'navbar-brand' %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarsMain">
-        <ul class="navbar-nav mr-auto">
-          <%= nav_link 'Jobs', jobs_path %>
-          <%= nav_link 'Tags', tags_path %>
-          <%= nav_link 'Employers', employers_path %>
-          <%= nav_link moderation_text_with_badge, moderate_jobs_path if can? :moderate, Job.all %>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarsMain">
+          <ul class="navbar-nav mr-auto">
+            <%= nav_link 'Jobs', jobs_path %>
+            <%= nav_link 'Tags', tags_path %>
+            <%= nav_link 'Employers', employers_path %>
+            <%= nav_link moderation_text_with_badge, moderate_jobs_path if can? :moderate, Job.all %>
+          </ul>
 
-          <% if current_user %>
-        <span class="pull-right navbar-text"><%= current_user.nickname || current_user.email %></span>
-        <% end %>
-        <ul class="navbar-nav pull-right">
-          <% if current_user %>
-            <%= nav_link 'Logout', destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= nav_link 'Login', user_login_path %>
+            <% if current_user %>
+          <span class="pull-right navbar-text"><%= current_user.nickname || current_user.email %></span>
           <% end %>
-        </ul>
+          <ul class="navbar-nav pull-right">
+            <% if current_user %>
+              <%= nav_link 'Logout', destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= nav_link 'Login', user_login_path %>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
 
-    <div class="container-fluid">
-      <%= render '/shared/flash_messages' %>
+    <%= render '/shared/flash_messages' %>
+    <div class="mb-5">
       <%= yield %>
     </div>
   </body>
