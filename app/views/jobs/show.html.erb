@@ -6,115 +6,133 @@
 <% end %>
 
 <article itemscope itemtype="http://schema.org/JobPosting">
-  <h1 itemprop="title"><%= @job.title %></h1>
-  <p>
-    <span itemprop="employmentType"><%= render_job_badge(@job) %></span>
-    <% if @job.telecommute? %>
-      <span class="badge badge-info">Remote / Telecommute</span>
-    <% end %>
-  </p>
-  <div>
-    <strong class="sr-only">Created:</strong>
-    <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
+  <div class="job-header">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-12">
+          <span itemprop="employmentType"><%= render_job_badge(@job) %></span>
+          <% if @job.telecommute? %>
+            <span class="badge badge-info">Remote / Telecommute</span>
+          <% end %>
+        </div>
+        <div class="col-md-12">
+          <h1 class="display-4" itemprop="title"><%= @job.title %></h1>
+
+          <div class="h6 card-subtitle">
+            <% if @job.employer %>
+              <span itemprop="hiringOrganization" itemscope itemtype="http://schema.org/Organization">
+                <%= link_to(@job.employer, itemprop: 'url') do %>
+                  <%= content_tag :span, @job.employer.name, itemprop: 'name' %>
+                <% end %>
+              </span>
+            <% end %>
+            <%= ' — ' if @job.employer.present? && @job.location.present? %>
+            <% if @job.location.present? %>
+            <span itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
+              <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <% locality, region = @job.location.split(',', 2) %>
+                <span itemprop="addressLocality"><%= locality %></span><% if locality.present? && region.present? %>, <% end %>
+                <span itemprop="addressRegion"><%= region %></span>
+              </span>
+            </span>
+            <% end %>
+            <% if @job.employer %>
+              <div class="small mt-1"><%= @job.employer.jobs.recent.where.not(id: @job.id).count %> other recent jobs</div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-12 mt-2">
+          <strong class="sr-only">Created:</strong>
+          <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <% if @job.employer %>
-      <span itemprop="hiringOrganization" itemscope itemtype="http://schema.org/Organization">
-        <%= link_to(@job.employer, itemprop: 'url') do %>
-          <%= content_tag :span, @job.employer.name, itemprop: 'name' %>
-        <% end %>
-      </span>
-    <% end %>
-    <% '-' if @job.employer.present? && @job.location.present? %>
-    <% if @job.location.present? %>
-    <span itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
-      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-        <% locality, region = @job.location.split(',', 2) %>
-        <span itemprop="addressLocality"><%= locality %></span><% if locality.present? && region.present? %>, <% end %>
-        <span itemprop="addressRegion"><%= region %></span>
-      </span>
-    </span>
-    <% end %>
-  </div>
-
-  <% if @job.employer %>
-    <small><%= @job.employer.jobs.recent.where.not(id: @job.id).count %> other recent jobs</small>
-  <% end %>
-  <hr />
-
-  <div class="row">
-    <div class="col-md-8">
-      <div itemprop="description">
-        <h2 class="sr-only">Description</h2>
-        <%= render_marked_up_description @job.description, format: @job.description_markup %>
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-8">
+        <div itemprop="description">
+          <h2 class="sr-only">Description</h2>
+          <%= render_marked_up_description @job.description, format: @job.description_markup %>
+        </div>
       </div>
 
-      <% if @job.created_at != @job.updated_at %>
-        <hr />
-        <small>
-            <strong>Last updated:</strong>
-            <%= l(@job.updated_at) %>
-        </small>
-      <% end %>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 card-title mb-0">How to apply</h2>
+          </div>
+
+          <div class="card-body">
+          <% if @job.url.present? || @job.contact.present? %>
+            <% if @job.url.present? %>
+            <p>
+              <%= link_to @job.url, @job.url, itemprop: 'url' %>
+            </p>
+            <% end %>
+            <hr />
+            <% if @job.contact.present? %>
+            <p>
+              <strong>Contact:</strong>
+              <%= auto_link(simple_format(@job.contact)) %>
+            </p>
+            <% end %>
+          <% end %>
+
+          <% if @job.tags.any? %>
+            <hr />
+            <p itemprop="skills">
+              <% @job.tags.each do |tag| %>
+                <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-header">
+          <h2 class="h5 card-title mb-0">Metadata</h2>
+        </div>
+        <div class="card-body">
+          <% if @job.user %>
+          <p>
+            <strong>Submitted by:</strong>
+            <%= @job.user&.nickname || @job.user&.email %>
+          </p>
+          <% end %>
+
+          <% if @job.published? %>
+          <p>
+            <strong>Published:</strong>
+            <%= l(@job.published_at) %>
+          </p>
+          <% else %>
+          <p>
+            <span class="badge badge-danger">Unpublished</span>
+          </p>
+          <% end %>
+
+          <% if !@job.published? && can?(:manage, @job) %>
+            <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish' %>
+          <% end %>
+          <% if can? :edit, @job %>
+            <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-secondary' %>
+          <% end %>
+          <% if can? :delete, @job %>
+            <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-4">
-    <% if @job.url.present? || @job.contact.present? %>
-      <h2 class="h3">How to apply</h2>
-
-      <% if @job.url.present? %>
-      <p>
-        <%= link_to @job.url, @job.url, itemprop: 'url' %>
-      </p>
-      <% end %>
-
-      <% if @job.contact.present? %>
-      <p>
-        <strong>Contact:</strong>
-        <%= auto_link(simple_format(@job.contact)) %>
-      </p>
-      <% end %>
-        <hr />
-    <% end %>
-
-    <% if @job.tags.any? %>
-      <p itemprop="skills">
-        <% @job.tags.each do |tag| %>
-          <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
-        <% end %>
-      </p>
+    <% if @job.created_at != @job.updated_at %>
       <hr />
+      <small>
+          <strong>Last updated:</strong>
+          <%= l(@job.updated_at) %>
+      </small>
     <% end %>
-    <h2 class="h5">Metadata</h2>
-
-    <% if @job.user %>
-    <p>
-      <strong>Submitted by:</strong>
-      <%= @job.user&.nickname || @job.user&.email %>
-    </p>
-    <% end %>
-
-    <% if @job.published? %>
-    <p>
-      <strong>Published:</strong>
-      <%= l(@job.published_at) %>
-    </p>
-    <% else %>
-    <p>
-      <span class="badge badge-danger">Unpublished</span>
-    </p>
-    <% end %>
-    
-    <% if !@job.published? && can?(:manage, @job) %>
-      <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish' %>
-    <% end %>
-    <% if can? :edit, @job %>
-      <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-secondary' %>
-    <% end %>
-    <% if can? :delete, @job %>
-      <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-    <% end %>
-    </div>
   </div>
 </article>

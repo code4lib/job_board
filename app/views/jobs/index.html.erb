@@ -3,11 +3,13 @@
   <%= auto_discovery_link_tag(:json, jobs_url(format: 'json'), type: 'application/json') %>
 <% end %>
 
-<%= link_to 'Post new job', new_job_path, class: 'btn btn-primary float-right' if can? :create, Job %>
+<div class="job-header py-3 mb-3">
+  <div class="container">
+    <%= link_to 'Post new job', new_job_path, class: 'btn btn-primary float-right mt-3' if can? :create, Job %>
+    <h1 class="display-4"><%= params[:job_type].humanize if params[:job_type] %> Jobs</h1>
+  </div>
+</div>
 
-<h1><%= params[:job_type].humanize if params[:job_type] %> Jobs</h1>
-<%= render 'table', jobs: @jobs %>
-
-<br>
-
-<%= link_to 'New Job', new_job_path, class: 'btn btn-primary' if can? :create, Job %>
+<div class="container">
+  <%= render 'table', jobs: @jobs %>
+</div>

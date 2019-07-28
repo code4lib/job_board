@@ -20,8 +20,8 @@ $(function() {
       }
     }
 
-    $('.publish[data-remote]').on('ajax:success', function() {
-      $(this).closest('tr').remove();
+    $('.publish[data-remote],.delete[data-remote]').on('ajax:success', function() {
+      $(this).closest('.job').remove();
     });
 
     if($('#job_employer_name').length > 0) {

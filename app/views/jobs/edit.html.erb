@@ -1,4 +1,11 @@
 <%- page_title!("Editing #{@job.display_title}")%>
-<h1>Editing Job</h1>
 
-<%= render 'form', job: @job %>
+<div class="job-header py-3 mb-3">
+  <div class="container">
+    <h1 class="display-4">Editing Job</h1>
+  </div>
+</div>
+
+<div class="container">
+  <%= render 'form', job: @job %>
+</div>
