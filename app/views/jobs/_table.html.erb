@@ -21,7 +21,7 @@
           <div class="small"><%= l job.created_at.to_date %></div>
         </div>
         <h5 class="card-title w-75"><%= link_to job.title, job, class: 'stretched-link' %></h5>
-        <div class="card-subtitle w-75"><%= safe_join([job.employer.name, job.location].reject(&:blank?), ' — ') %></div>
+        <div class="card-subtitle w-75"><%= safe_join([job.employer&.name, job.location].reject(&:blank?), ' — ') %></div>
         <p class="card-text text-muted mt-2 mb-0 w-75"><%= strip_tags(job.description).truncate(250) %></p>
       </div>
       <% if job.tags.any? %>
