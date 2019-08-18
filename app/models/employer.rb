@@ -9,6 +9,8 @@ class Employer < ApplicationRecord
 
   default_scope { order(name: :asc) }
 
+  scope :with_published_jobs, -> { joins(:jobs).where(jobs: { published: true }) }
+
   validates :name, presence: true
 
   def slug_candidates

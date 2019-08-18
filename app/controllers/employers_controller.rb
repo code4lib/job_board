@@ -1,10 +1,11 @@
 class EmployersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: :index
 
   # GET /employers
   # GET /employers.json
   def index
-    @employers = @employers.includes(:jobs).where(jobs: { published: true }).where.not(jobs: { id: nil })
+    @employers = Employer.with_published_jobs
+
     respond_to do |format|
       format.html { @employers = @employers.page(params[:page]) }
       format.json { render json: @employers }
