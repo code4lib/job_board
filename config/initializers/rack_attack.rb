@@ -20,3 +20,10 @@ Rack::Attack.blocklist('spam') do |req|
       req.params['job']['description'] =~ Regexp.join(/casino/, /online pharmacy/)
   end
 end
+
+Rack::Attack.blocklist('block ip from failed recaptchas') do |req|
+  # if variable `block <ip>` exists in cache store, then we'll block the request
+  Rack::Attack::Fail2Ban.filter("block-#{req.ip}", maxretry: 1, findtime: 60.minutes, bantime: 1.day) do
+    req.path == '/jobs' && Rails.cache.fetch("failed recaptcha #{req.ip}")
+  end
+end

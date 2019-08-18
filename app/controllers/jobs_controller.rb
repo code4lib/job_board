@@ -37,8 +37,8 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     respond_to do |format|
-      if (Settings.recaptcha.nil? || verify_recaptcha(model: @job)) && @job.save
-        format.html { redirect_to @job, notice: 'Thanks for your submission; a moderator will approve and publish your question soon.' }
+      if verify_recaptcha_or_block && @job.save
+        format.html { redirect_to @job }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -85,5 +85,11 @@ class JobsController < ApplicationController
         published_at: Time.now,
         origin: request.original_url
       )
+    end
+
+    def verify_recaptcha_or_block
+      return true if Settings.recaptcha.nil? || verify_recaptcha(model: @job)
+
+      Rails.cache.write("failed recaptcha #{request.ip}", true, expires_in: 60.minutes)
     end
 end
