@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def autopublish?
-    has_role?(:admin) || provider.present?
+    has_role?(:admin)
   end
 end
