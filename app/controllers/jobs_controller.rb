@@ -18,6 +18,10 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    if cannot? :read, @job
+      flash.now[:notice] ||= 'Thanks for your submission; a moderator will approve and publish your post soon.'
+      render 'pending', status: 404
+    end
   end
 
   # GET /jobs/new
