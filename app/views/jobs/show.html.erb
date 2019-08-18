@@ -41,6 +41,13 @@
             <% end %>
           </div>
         </div>
+        <% if @job.salary.present? %>
+          <div class="col-md-12 mt-2">
+            <span>Salary:</span>
+            <span itemprop="estimatedSalary"><%= @job.salary %></span>
+          </div>
+        <% end %>
+
         <div class="col-md-12 mt-2">
           <strong class="sr-only">Created:</strong>
           <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
@@ -65,63 +72,66 @@
           </div>
 
           <div class="card-body">
-          <% if @job.url.present? || @job.contact.present? %>
             <% if @job.url.present? %>
-            <p>
-              <%= link_to @job.url, @job.url, itemprop: 'url' %>
-            </p>
+              <p>
+                <%= link_to @job.url, @job.url, itemprop: 'url' %>
+              </p>
             <% end %>
-            <hr />
+
+            <% if @job.url.present? && @job.contact.present? %>
+              <hr />
+            <% end %>
+
             <% if @job.contact.present? %>
+              <p>
+                <strong>Contact:</strong>
+                <%= auto_link(simple_format(@job.contact)) %>
+              </p>
+            <% end %>
+
+            <% if @job.tags.any? %>
+              <hr />
+              <p itemprop="skills">
+                <% @job.tags.each do |tag| %>
+                  <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
+                <% end %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header">
+            <h2 class="h5 card-title mb-0">Metadata</h2>
+          </div>
+          <div class="card-body">
+            <% if @job.user %>
             <p>
-              <strong>Contact:</strong>
-              <%= auto_link(simple_format(@job.contact)) %>
+              <strong>Submitted by:</strong>
+              <%= @job.user&.nickname || @job.user&.email %>
             </p>
             <% end %>
-          <% end %>
 
-          <% if @job.tags.any? %>
-            <hr />
-            <p itemprop="skills">
-              <% @job.tags.each do |tag| %>
-                <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
-              <% end %>
+            <% if @job.published? %>
+            <p>
+              <strong>Published:</strong>
+              <%= l(@job.published_at) %>
             </p>
-          <% end %>
-        </div>
-      </div>
-      <div class="card mt-3">
-        <div class="card-header">
-          <h2 class="h5 card-title mb-0">Metadata</h2>
-        </div>
-        <div class="card-body">
-          <% if @job.user %>
-          <p>
-            <strong>Submitted by:</strong>
-            <%= @job.user&.nickname || @job.user&.email %>
-          </p>
-          <% end %>
+            <% else %>
+            <p>
+              <span class="badge badge-danger">Unpublished</span>
+            </p>
+            <% end %>
 
-          <% if @job.published? %>
-          <p>
-            <strong>Published:</strong>
-            <%= l(@job.published_at) %>
-          </p>
-          <% else %>
-          <p>
-            <span class="badge badge-danger">Unpublished</span>
-          </p>
-          <% end %>
-
-          <% if !@job.published? && can?(:manage, @job) %>
-            <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish' %>
-          <% end %>
-          <% if can? :edit, @job %>
-            <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-secondary' %>
-          <% end %>
-          <% if can? :delete, @job %>
-            <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          <% end %>
+            <% if !@job.published? && can?(:manage, @job) %>
+              <%= link_to 'Publish', publish_job_path(@job), class: 'btn btn-primary publish' %>
+            <% end %>
+            <% if can? :edit, @job %>
+              <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-secondary' %>
+            <% end %>
+            <% if can? :delete, @job %>
+              <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <% end %>
           </div>
         </div>
       </div>

@@ -22,13 +22,19 @@
     <div class="col-md-2">
       <%= f.select :job_type, Job.job_types.keys.map { |t| [t.humanize, t] } %>
     </div>
+    <div class="col-md-2">
+      <label class="control-label hidden-sm-down">&nbsp;</label>
+      <%= f.check_box :telecommute, label: 'Remote / Telecommute' %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-4">
       <%= f.text_field :location %>
     </div>
 
-    <div class="col-md-2">
-      <label class="control-label hidden-sm-down">&nbsp;</label>
-      <%= f.check_box :telecommute, label: 'Remote / Telecommute' %>
+    <div class="col-md-4">
+      <%= f.text_field :salary, label: 'Salary range' %>
     </div>
   </div>
 
