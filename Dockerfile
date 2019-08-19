@@ -1,4 +1,7 @@
-FROM phusion/passenger-ruby24:0.9.35
+FROM phusion/passenger-customizable:1.0.6
+
+RUN /pd_build/nodejs.sh
+RUN /pd_build/ruby-2.6.*.sh
 
 # Set correct environment variables.
 ENV HOME /root

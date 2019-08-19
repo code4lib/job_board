@@ -16,7 +16,7 @@ services:
       - HONEYBADGER_API_KEY=${HONEYBADGER_API_KEY}
       - RAILS_ENV=production
     ports:
-      - 8080:80
+      - 8081:80
       - 8443:443
     networks:
       internal:
