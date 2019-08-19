@@ -2,6 +2,7 @@ version: '2'
 
 volumes:
   db:
+  redis:
 
 networks:
   external:
@@ -12,6 +13,7 @@ services:
     build: .
     environment:
       - DATABASE_URL=postgresql://postgres@db/postgres
+      - REDIS_URL=redis://redis:6379/0
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
       - HONEYBADGER_API_KEY=${HONEYBADGER_API_KEY}
       - RAILS_ENV=production
@@ -25,5 +27,13 @@ services:
     image: postgres
     volumes:
       - db:/var/lib/postgresql/data
+    networks:
+      internal:
+
+  redis:
+    image: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis:/data
     networks:
       internal:

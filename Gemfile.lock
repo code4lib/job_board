@@ -75,6 +75,8 @@ GEM
     childprocess (1.0.1)
       rake (< 13.0)
     chronic (0.10.2)
+    classifier-reborn (2.2.0)
+      fast-stemmer (~> 1.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -136,6 +138,7 @@ GEM
       railties (>= 4.2.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    fast-stemmer (1.0.2)
     ffi (1.11.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
@@ -280,6 +283,7 @@ GEM
     recaptcha (5.0.0)
       json
     redcarpet (3.4.0)
+    redis (4.1.2)
     regexp_parser (1.5.1)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -391,6 +395,7 @@ DEPENDENCIES
   byebug
   cancancan
   capybara (~> 3.0)
+  classifier-reborn
   coffee-rails (~> 4.2)
   config
   devise
@@ -425,6 +430,7 @@ DEPENDENCIES
   rails_autolink
   recaptcha
   redcarpet
+  redis
   rolify
   rspec-rails
   sass-rails (~> 5.0)

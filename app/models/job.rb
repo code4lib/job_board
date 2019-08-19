@@ -19,6 +19,7 @@ class Job < ApplicationRecord
   validates :title, :description, :job_type, presence: true
 
   acts_as_taggable
+  before_validation :run_spam_analysis, on: :create
   after_save :send_job_email, if: :just_published?
   after_save :send_slack_notification, if: :just_published?
 
@@ -50,8 +51,16 @@ class Job < ApplicationRecord
     update(published: true, published_at: Time.now)
   end
 
+  def run_spam_analysis
+    return unless posted_on_site?
+
+    classification = Classifier.classify(self)
+
+    self.title = "[SPAM] #{title}" if classification == 'Spam'
+  end
+
   def send_job_email
-    JobMailer.single(self).deliver_later if origin =~ /jobs\.code4lib\.org/
+    JobMailer.single(self).deliver_later if posted_on_site?
   end
 
   def send_slack_notification
@@ -64,5 +73,9 @@ class Job < ApplicationRecord
 
   def expired?
     created_at < Time.zone.now - 2.months
+  end
+
+  def posted_on_site?
+    origin =~ /jobs\.code4lib\.org/
   end
 end

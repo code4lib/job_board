@@ -95,6 +95,9 @@ gem 'rack-attack'
 
 gem 'google-analytics-rails'
 
+gem 'classifier-reborn'
+gem 'redis'
+
 group :production do
   gem 'pg'
 end
