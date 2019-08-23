@@ -12,7 +12,7 @@ class Ability
         employer.jobs.published.any?
       end
 
-      can :manage, Job, user_id: user.id if user.persisted?
+      can %i[edit destroy], Job, user_id: user.id if user.persisted?
       can :create, Job
     end
   end
