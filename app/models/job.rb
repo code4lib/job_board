@@ -56,7 +56,10 @@ class Job < ApplicationRecord
 
     classification = Classifier.classify(self)
 
-    self.title = "[SPAM] #{title}" if classification == 'Spam'
+    if classification == 'Spam'
+      update(title: "[SPAM] #{title}")
+      destroy
+    end
   end
 
   def send_job_email
