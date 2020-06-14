@@ -12,7 +12,6 @@ describe 'Posting a new job' do
     fill_in 'job_description', with: 'Red, Green, Repeat.'
 
     click_on 'Create Job'
-
-    expect(page).to have_selector 'h1', text: 'Senior Test Runner'
+    expect(page).to have_content 'Thanks for your submission; a moderator will approve and publish your post soon.'
   end
 end
