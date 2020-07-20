@@ -4,7 +4,7 @@ SitemapGenerator::Sitemap.create do
     add job_path(job), lastmod: job.updated_at
   end
 
-  Employer.find_each do |employer|
+  Employer.with_published_jobs.find_each do |employer|
     add employer_path(employer), lastmod: employer.updated_at
   end
 end
