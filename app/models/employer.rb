@@ -9,7 +9,7 @@ class Employer < ApplicationRecord
 
   default_scope { order(name: :asc) }
 
-  scope :with_published_jobs, -> { joins(:jobs).where(jobs: { published: true }) }
+  scope :with_published_jobs, -> { joins(:jobs).where(jobs: { published: true }).distinct }
 
   validates :name, presence: true
 
