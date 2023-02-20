@@ -17,7 +17,7 @@ Rack::Attack.blocklist('spam') do |req|
   Rack::Attack::Fail2Ban.filter("spam-#{req.ip}", maxretry: 1, findtime: 10.minutes, bantime: 60.minutes) do
     req.path == '/jobs' && req.post? &&
       req.params['job'] && req.params['job']['description'] &&
-      req.params['job']['description'] =~ Regexp.join(/casino/, /online pharmacy/)
+      Settings.blocklist.any? { |r| Regexp.new(r) =~ req.params['job']['description'] }
   end
 end
 

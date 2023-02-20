@@ -16,3 +16,5 @@ slack:
 
 feeds:
   - http://digital-scholarship.org/digitalkoans/category/digital-library-jobs/feed/
+
+blocklist: []
