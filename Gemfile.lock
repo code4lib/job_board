@@ -369,6 +369,8 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
+    rss (0.2.9)
+      rexml
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -493,6 +495,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rolify
   rspec-rails
+  rss
   sassc-rails
   secure_headers
   selenium-webdriver (>= 4.0.0.rc1)
