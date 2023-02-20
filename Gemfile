@@ -79,8 +79,8 @@ gem 'omniauth-twitter'
 gem 'cancancan'
 
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.x'
-gem 'bootstrap_form'
+gem 'bootstrap', '~> 5.0'
+gem 'bootstrap_form', '~> 5.0'
 
 gem 'rails-html-sanitizer'
 gem 'github-markup', require: 'github/markup'

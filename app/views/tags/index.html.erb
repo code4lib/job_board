@@ -10,7 +10,7 @@
     <% @tags.each do |tag| %>
       <tr>
         <td>
-          <span class="badge badge-secondary"><%= tag.taggings_count %></span>
+          <span class="badge bg-secondary"><%= tag.taggings_count %></span>
         </td>
         <td>
           <%= link_to tag, tag_url(tag.name) %>

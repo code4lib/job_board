@@ -27,8 +27,14 @@
   }
 
   .label-info {
-    @extend .badge-info;
+    @extend .bg-info;
   }
+}
+
+.job .badge,
+.job-header .badge,
+.tags .badge {
+  text-decoration: none;
 }
 
 .job-header {

@@ -12,7 +12,7 @@
         <div class="col-md-12">
           <span itemprop="employmentType"><%= render_job_badge(@job) %></span>
           <% if @job.telecommute? %>
-            <span class="badge badge-info">Remote / Telecommute</span>
+            <span class="badge bg-info">Remote / Telecommute</span>
           <% end %>
         </div>
         <div class="col-md-12">
@@ -49,7 +49,7 @@
         <% end %>
 
         <div class="col-md-12 mt-2">
-          <strong class="sr-only">Created:</strong>
+          <strong class="visually-hidden">Created:</strong>
           <span itemprop="datePosted"><%= l(@job.created_at.to_date) %></span>
         </div>
       </div>
@@ -60,7 +60,7 @@
     <div class="row mt-4">
       <div class="col-md-8">
         <div itemprop="description">
-          <h2 class="sr-only">Description</h2>
+          <h2 class="visually-hidden">Description</h2>
           <%= render_marked_up_description @job.description, format: @job.description_markup %>
         </div>
       </div>
@@ -91,9 +91,9 @@
 
             <% if @job.tags.any? %>
               <hr />
-              <p itemprop="skills">
+              <p class="tags" itemprop="skills">
                 <% @job.tags.each do |tag| %>
-                  <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
+                  <%= link_to tag.name, tag_path(tag.name), class: 'badge bg-secondary' %>
                 <% end %>
               </p>
             <% end %>
@@ -119,7 +119,7 @@
             </p>
             <% else %>
             <p>
-              <span class="badge badge-danger">Unpublished</span>
+              <span class="badge bg-danger">Unpublished</span>
             </p>
             <% end %>
 

@@ -16,27 +16,27 @@ RSpec.describe JobsHelper, type: :helper do
   describe '#render_job_badge' do
     it 'renders a full time badge' do
       job.job_type = :full_time
-      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-success'
+      expect(helper.render_job_badge(job)).to have_selector 'a.badge.bg-success'
     end
 
     it 'renders a part time badge' do
       job.job_type = :part_time
-      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-info'
+      expect(helper.render_job_badge(job)).to have_selector 'a.badge.bg-info'
     end
 
     it 'renders a internship badge' do
       job.job_type = :internship
-      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-danger'
+      expect(helper.render_job_badge(job)).to have_selector 'a.badge.bg-danger'
     end
 
     it 'renders a part time badge' do
       job.job_type = :temporary
-      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-warning'
+      expect(helper.render_job_badge(job)).to have_selector 'a.badge.bg-warning'
     end
 
     it 'renders an uncategorized badge' do
       job.job_type = :uncategorized
-      expect(helper.render_job_badge(job)).to have_selector 'a.badge.badge-secondary'
+      expect(helper.render_job_badge(job)).to have_selector 'a.badge.bg-secondary'
     end
   end
 end

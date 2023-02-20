@@ -76,9 +76,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap (4.6.2)
+    bootstrap (5.2.3)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.16.1, < 2)
+      popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
     bootstrap_form (5.1.0)
       actionpack (>= 5.2)
@@ -280,7 +280,7 @@ GEM
     paranoia (2.6.1)
       activerecord (>= 5.1, < 7.1)
     pg (1.4.5)
-    popper_js (1.16.1)
+    popper_js (2.11.6)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -446,8 +446,8 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   bootsnap
-  bootstrap (~> 4.x)
-  bootstrap_form
+  bootstrap (~> 5.0)
+  bootstrap_form (~> 5.0)
   cancancan
   capybara (>= 3.26)
   classifier-reborn

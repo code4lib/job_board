@@ -6,17 +6,17 @@
     <li class="card job">
       <% if can?(:manage, job) %>
         <div class="card-header">
-          <div class="float-right">
+          <div class="float-end">
             <%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary btn-sm publish', remote: true unless job.published? %>
             <%= link_to 'Delete', job, method: :delete, class: 'btn btn-danger btn-sm delete', remote: true unless job.published? %>
           </div>
         </div>
       <% end %>
       <div class="card-body position-relative">
-        <div class="float-right text-right">
+        <div class="float-end text-end">
           <div><%= render_job_badge(job) %></div>
           <% if job.telecommute? %>
-            <span class="badge badge-info">Remote / Telecommute</span>
+            <span class="badge bg-info">Remote / Telecommute</span>
           <% end %>
           <div class="small"><%= l job.created_at.to_date %></div>
         </div>
@@ -26,9 +26,9 @@
       </div>
       <% if job.tags.any? %>
         <div class="card-footer text-muted small">
-          <div class="float-left">
+          <div class="float-start">
             <% job.tags.each do |tag| %>
-              <%= link_to tag.name, tag_path(tag.name), class: 'badge badge-secondary' %>
+              <%= link_to tag.name, tag_path(tag.name), class: 'badge bg-secondary' %>
             <% end %>
           </div>
         </div>
