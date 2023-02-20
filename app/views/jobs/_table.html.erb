@@ -1,38 +1,42 @@
 <% show_pagination = true if show_pagination.nil? %>
 <%= page_entries_info jobs if show_pagination %>
 
-<ul class="list-unstyled mt-3 card-rows">
+<ul class="list-unstyled mt-3 job-rows">
   <% jobs.each do |job| %>
-    <li class="card job">
-      <% if can?(:manage, job) %>
-        <div class="card-header">
-          <div class="float-end">
+    <li class="card job position-relative">
+      <div class="card-header">
+        <h5 class="card-title"><%= link_to job.title, job, class: 'stretched-link' %></h5>
+        <div class="card-subtitle"><%= safe_join([job.employer&.name, job.location].reject(&:blank?), ' — ') %></div>
+      </div>
+
+      <div class="card-body">
+        <p class="card-text text-muted mt-2 mb-0"><%= strip_tags(job.description).truncate(250) %></p>
+
+        <% if job.tags.any? %>
+          <div class="text-muted small">
+            <div class="float-start">
+              <% job.tags.each do |tag| %>
+                <%= link_to tag.name, tag_path(tag.name), class: 'badge bg-secondary' %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="card-footer">
+        <% if can?(:manage, job) %>
+          <div class="card-actions">
             <%= link_to 'Publish', publish_job_path(job), class: 'btn btn-primary btn-sm publish', remote: true unless job.published? %>
             <%= link_to 'Delete', job, method: :delete, class: 'btn btn-danger btn-sm delete', remote: true unless job.published? %>
           </div>
-        </div>
-      <% end %>
-      <div class="card-body position-relative">
-        <div class="float-end text-end">
-          <div><%= render_job_badge(job) %></div>
-          <% if job.telecommute? %>
-            <span class="badge bg-info">Remote / Telecommute</span>
-          <% end %>
-          <div class="small"><%= l job.created_at.to_date %></div>
-        </div>
-        <h5 class="card-title w-75"><%= link_to job.title, job, class: 'stretched-link' %></h5>
-        <div class="card-subtitle w-75"><%= safe_join([job.employer&.name, job.location].reject(&:blank?), ' — ') %></div>
-        <p class="card-text text-muted mt-2 mb-0 w-75"><%= strip_tags(job.description).truncate(250) %></p>
+        <% end %>
+
+        <div><%= render_job_badge(job) %></div>
+        <% if job.telecommute? %>
+          <span class="badge bg-info">Remote / Telecommute</span>
+        <% end %>
+        <div class="small mt-2"><%= l job.created_at.to_date %></div>
       </div>
-      <% if job.tags.any? %>
-        <div class="card-footer text-muted small">
-          <div class="float-start">
-            <% job.tags.each do |tag| %>
-              <%= link_to tag.name, tag_path(tag.name), class: 'badge bg-secondary' %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
     </li>
   <% end %>
 </ul>
