@@ -110,10 +110,6 @@ group :production do
   gem 'pg'
 end
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
-end
-
 gem 'gmail'
 gem 'rails_autolink'
 gem 'paranoia'

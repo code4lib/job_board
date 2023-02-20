@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require popper
-//= require tether
 //= require bootstrap
 //= require bloodhound
 //= require typeahead.jquery.js
