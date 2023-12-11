@@ -18,7 +18,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1><%= link_to 'Recently posted jobs ›', jobs_path, class: 'text-reset' %></h1>
+      <h2><%= link_to 'Recently posted jobs ›', jobs_path, class: 'text-reset' %></h2>
       <%= render 'jobs/table', jobs: @jobs, show_pagination: false %>
       <%= link_to 'View all jobs', jobs_path, class: 'btn btn-primary' %>
     </div>
