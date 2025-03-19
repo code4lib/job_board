@@ -31,7 +31,7 @@ xml.feed("xmlns" => "http://www.w3.org/2005/Atom") do
     xml.entry do
       xml.title job.title
       xml.updated job.published_at.iso8601
-      xml.link job_url(job)
+      xml.link("href" => job_url(job))
       xml.id job_url(job)
       
       xml.author { xml.name(job.user&.email) }
