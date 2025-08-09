@@ -10,7 +10,7 @@
       </div>
 
       <div class="card-body">
-        <p class="card-text text-muted mt-2 mb-0"><%= strip_tags(job.description).truncate(250) %></p>
+        <p class="card-text text-muted mt-2 mb-0"><%= strip_tags(job.description).truncate(250).html_safe %></p>
 
         <% if job.tags.any? %>
           <div class="text-muted small">
