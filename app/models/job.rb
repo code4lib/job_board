@@ -5,7 +5,9 @@ class Job < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :employer, required: false
 
-  enum job_type: [:full_time, :part_time, :temporary, :contract, :internship, :rfp, :contest, :uncategorized]
+  enum :job_type, {
+    full_time: 0, part_time: 1, temporary: 2, contract: 3, internship: 4, rfp: 5, contest: 6,
+    uncategorized: 7 }, default: :full_time
 
   scope :published, ->() { where(published: true) }
   scope :unpublished, ->() { where(published: false) }
