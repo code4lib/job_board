@@ -1,7 +1,7 @@
-FROM phusion/passenger-customizable:2.5.0
+FROM phusion/passenger-customizable:3.1.3
 
 RUN /pd_build/nodejs.sh
-RUN /pd_build/ruby-3.1.*.sh
+RUN /pd_build/ruby-3.4.*.sh
 
 # Set correct environment variables.
 ENV HOME /root
