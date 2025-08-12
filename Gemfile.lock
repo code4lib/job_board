@@ -151,7 +151,7 @@ GEM
       oauth (>= 0.3.6)
     google-analytics-rails (1.1.1)
     hashie (5.0.0)
-    honeybadger (6.0.4)
+    honeybadger (6.0.5)
       logger
       ostruct
     i18n (1.14.7)
@@ -285,7 +285,7 @@ GEM
     rack (3.2.0)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
-    rack-mini-profiler (2.3.4)
+    rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
     rack-protection (4.1.1)
       base64 (>= 0.1.0)
@@ -345,7 +345,10 @@ GEM
       psych (>= 4.0.0)
     recaptcha (5.20.1)
     redcarpet (3.6.1)
-    redis (4.8.1)
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
+    redis-client (0.25.2)
+      connection_pool
     regexp_parser (2.11.1)
     reline (0.6.2)
       io-console (~> 0.5)
@@ -492,14 +495,14 @@ DEPENDENCIES
   popper_js
   puma (~> 6.0)
   rack-attack
-  rack-mini-profiler (~> 2.0)
+  rack-mini-profiler (~> 4.0)
   rails (~> 8.0)
   rails-controller-testing
   rails-html-sanitizer
   rails_autolink
   recaptcha
   redcarpet
-  redis (~> 4.0)
+  redis (~> 5.4)
   rolify
   rspec-rails
   rss
