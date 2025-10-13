@@ -151,7 +151,7 @@ GEM
       oauth (>= 0.3.6)
     google-analytics-rails (1.1.1)
     hashie (5.0.0)
-    honeybadger (6.1.0)
+    honeybadger (6.1.1)
       logger
       ostruct
     i18n (1.14.7)
