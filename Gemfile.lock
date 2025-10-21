@@ -151,7 +151,7 @@ GEM
       oauth (>= 0.3.6)
     google-analytics-rails (1.1.1)
     hashie (5.0.0)
-    honeybadger (6.1.1)
+    honeybadger (6.1.2)
       logger
       ostruct
     i18n (1.14.7)
@@ -280,11 +280,11 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (7.0.4)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.1)
-    rack-attack (6.7.0)
+    rack (3.2.3)
+    rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
