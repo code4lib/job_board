@@ -154,7 +154,7 @@ GEM
       oauth (>= 0.3.6)
     google-analytics-rails (1.1.1)
     hashie (5.0.0)
-    honeybadger (6.7.0)
+    honeybadger (6.9.0)
       logger
       ostruct
     i18n (1.14.8)
@@ -388,7 +388,7 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rss (0.3.2)
+    rss (0.3.3)
       rexml
     rubyzip (2.4.1)
     sassc (2.4.0)
