@@ -412,7 +412,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
-    sitemap_generator (7.0.1)
+    sitemap_generator (7.1.0)
       builder (~> 3.0)
     slowpoke (1.0.0)
       actionpack (>= 7.2)
