@@ -419,7 +419,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simplecov (1.0.2)
+    simplecov (1.0.3)
     sitemap_generator (7.1.0)
       builder (~> 3.0)
     slowpoke (1.0.0)
